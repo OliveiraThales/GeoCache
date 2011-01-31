@@ -28,6 +28,6 @@ namespace GeoCache.Contracts
         /// <summary>
         /// Updates a document in the data repository.
         /// </summary>
-        void Update(string query, Dictionary<string, object> updatingDocument);
+        void Update(Dictionary<string, object> queryDocument, Dictionary<string, object> updatingDocument);
     }
 }
