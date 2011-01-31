@@ -1,0 +1,5 @@
+c:\users\tholiveira\documents\visual studio 2010\Projects\GeoCache\GeoCache.Contracts\bin\Debug\GeoCache.Contracts.dll
+c:\users\tholiveira\documents\visual studio 2010\Projects\GeoCache\GeoCache.Contracts\bin\Debug\GeoCache.Contracts.pdb
+c:\users\tholiveira\documents\visual studio 2010\Projects\GeoCache\GeoCache.Contracts\obj\Debug\ResolveAssemblyReference.cache
+c:\users\tholiveira\documents\visual studio 2010\Projects\GeoCache\GeoCache.Contracts\obj\Debug\GeoCache.Contracts.dll
+c:\users\tholiveira\documents\visual studio 2010\Projects\GeoCache\GeoCache.Contracts\obj\Debug\GeoCache.Contracts.pdb
