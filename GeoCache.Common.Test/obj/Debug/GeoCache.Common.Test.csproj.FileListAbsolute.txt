@@ -1,0 +1,15 @@
+E:\Projects\GeoCache\GeoCache.Common.Test\obj\Debug\ResolveAssemblyReference.cache
+E:\Projects\GeoCache\GeoCache.Common.Test\bin\Debug\GeoCache.Common.Test.dll
+E:\Projects\GeoCache\GeoCache.Common.Test\bin\Debug\GeoCache.Common.Test.pdb
+E:\Projects\GeoCache\GeoCache.Common.Test\bin\Debug\GeoCache.Common.dll
+E:\Projects\GeoCache\GeoCache.Common.Test\bin\Debug\GeoCache.Contracts.dll
+E:\Projects\GeoCache\GeoCache.Common.Test\bin\Debug\nunit.framework.dll
+E:\Projects\GeoCache\GeoCache.Common.Test\bin\Debug\MongoDB.Driver.dll
+E:\Projects\GeoCache\GeoCache.Common.Test\bin\Debug\MongoDB.Bson.dll
+E:\Projects\GeoCache\GeoCache.Common.Test\bin\Debug\GeoCache.Common.pdb
+E:\Projects\GeoCache\GeoCache.Common.Test\bin\Debug\GeoCache.Contracts.pdb
+E:\Projects\GeoCache\GeoCache.Common.Test\bin\Debug\nunit.framework.xml
+E:\Projects\GeoCache\GeoCache.Common.Test\bin\Debug\MongoDB.Driver.pdb
+E:\Projects\GeoCache\GeoCache.Common.Test\bin\Debug\MongoDB.Bson.pdb
+E:\Projects\GeoCache\GeoCache.Common.Test\obj\Debug\GeoCache.Common.Test.dll
+E:\Projects\GeoCache\GeoCache.Common.Test\obj\Debug\GeoCache.Common.Test.pdb

@@ -1,0 +1,67 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="repository" priority="1" />
+      <Item value="var" priority="2" />
+      <Item value="new" priority="1" />
+      <Item value="document" priority="3" />
+      <Item value="public" priority="0" />
+      <Item value="Dictionary" priority="1" />
+      <Item value="string" priority="1" />
+      <Item value="return" priority="0" />
+      <Item value="_collection" priority="0" />
+      <Item value="object" priority="0" />
+      <Item value="Assert`0" priority="1" />
+      <Item value="documentFound" priority="1" />
+      <Item value="bsonDocument" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:GeoCache.Common.Repository.MongoRepository">
+      <Item value="Insert`0" priority="0" />
+      <Item value="FindOne`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.Dictionary`2">
+      <Item value="Add`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:MongoDB.Driver.MongoCollection">
+      <Item value="FindOneAs`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@NUnit.Framework.Assert">
+      <Item value="IsNotNull`0" priority="0" />
+      <Item value="AreEqual`0" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="E9ED8001-11B2-4661-9F1C-C97A47FF79A2/f:IRepository.cs" caret="930" fromTop="30" />
+      <File id="E5309C8C-9319-4F39-9AED-15398A76AB3F/f:MongoRepositoryTest.cs" caret="712" fromTop="16" />
+      <File id="C1F7D431-C53C-433C-9B07-B69C4064B0A7/d:Repository/f:MongoRepository.cs" caret="887" fromTop="16" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="E5309C8C-9319-4F39-9AED-15398A76AB3F/f:MongoRepositoryTest.cs" caret="0" fromTop="0" />
+      <File id="E9ED8001-11B2-4661-9F1C-C97A47FF79A2/f:IRepository.cs" caret="930" fromTop="30" />
+      <File id="E5309C8C-9319-4F39-9AED-15398A76AB3F/f:MongoRepositoryTest.cs" caret="435" fromTop="18" />
+      <File id="C1F7D431-C53C-433C-9B07-B69C4064B0A7/d:Repository/f:MongoRepository.cs" caret="33" fromTop="0" />
+      <File id="C1F7D431-C53C-433C-9B07-B69C4064B0A7/d:Repository/f:MongoRepository.cs" caret="419" fromTop="13" />
+      <File id="C1F7D431-C53C-433C-9B07-B69C4064B0A7/d:Repository/f:MongoRepository.cs" caret="872" fromTop="15" />
+      <File id="C1F7D431-C53C-433C-9B07-B69C4064B0A7/d:Repository/f:MongoRepository.cs" caret="1071" fromTop="21" />
+      <File id="E5309C8C-9319-4F39-9AED-15398A76AB3F/f:MongoRepositoryTest.cs" caret="685" fromTop="25" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir>C:\Program Files (x86)\NUnit 2.5.9\bin\net-2.0\</NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+</Configuration>

@@ -1,0 +1,5 @@
+<Modules>
+  <Module PersistentId="E5309C8C-9319-4F39-9AED-15398A76AB3F" ModuleId="GeoCache.Common.Test" />
+  <Module PersistentId="C1F7D431-C53C-433C-9B07-B69C4064B0A7" ModuleId="GeoCache.Common" />
+  <Module PersistentId="E9ED8001-11B2-4661-9F1C-C97A47FF79A2" ModuleId="GeoCache.Contracts" />
+</Modules>
