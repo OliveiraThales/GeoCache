@@ -8,7 +8,7 @@ namespace GeoCache.Common.Repository
     /// <summary>
     /// Implementation class for Mongo data repository
     /// </summary>
-    public class MongoRepository : IRepository
+    public class MongoRepository : ICacheRepository
     {
         private MongoCollection _collection;
         private MongoDatabase _database;

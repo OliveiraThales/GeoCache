@@ -5,14 +5,13 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{E9ED8001-11B2-4661-9F1C-C97A47FF79A2}</ProjectGuid>
+    <ProjectGuid>{606BA2A8-A7F9-4B17-82C0-3583FAE9107B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GeoCache.Contracts</RootNamespace>
-    <AssemblyName>GeoCache.Contracts</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <RootNamespace>GeoCache.Cache</RootNamespace>
+    <AssemblyName>GeoCache.Cache</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,6 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GeoAPI">
+      <HintPath>..\Libs\GeoAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="NetTopologySuite">
+      <HintPath>..\Libs\NetTopologySuite.dll</HintPath>
+    </Reference>
+    <Reference Include="ProjNET">
+      <HintPath>..\Libs\ProjNET.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,13 +49,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICache.cs" />
-    <Compile Include="ICacheManager.cs" />
-    <Compile Include="ICacheRepository.cs" />
-    <Compile Include="IEnvelope.cs" />
-    <Compile Include="IGeometry.cs" />
-    <Compile Include="IGeoRepository.cs" />
+    <Compile Include="InMemoryCache.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GeoCache.Contracts\GeoCache.Contracts.csproj">
+      <Project>{E9ED8001-11B2-4661-9F1C-C97A47FF79A2}</Project>
+      <Name>GeoCache.Contracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

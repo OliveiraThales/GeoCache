@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GeoCache.Contracts
 {
-    public interface IRepository : IDisposable
+    public interface ICacheRepository : IDisposable
     {
         /// <summary>
         /// Insert a document in the data repository.

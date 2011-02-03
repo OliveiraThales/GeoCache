@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoCache.Common", "GeoCache.Common\GeoCache.Common.csproj", "{C1F7D431-C53C-433C-9B07-B69C4064B0A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoCache.Common.Test", "GeoCache.Common.Test\GeoCache.Common.Test.csproj", "{E5309C8C-9319-4F39-9AED-15398A76AB3F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoCache.Contracts", "GeoCache.Contracts\GeoCache.Contracts.csproj", "{E9ED8001-11B2-4661-9F1C-C97A47FF79A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoCache.Cache", "GeoCache.Cache\GeoCache.Cache.csproj", "{606BA2A8-A7F9-4B17-82C0-3583FAE9107B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2391D141-07D7-4FD1-9CE0-3075B1AEFDE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoCache.Common.Test", "Tests\GeoCache.Common.Test\GeoCache.Common.Test.csproj", "{E5309C8C-9319-4F39-9AED-15398A76AB3F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,16 +21,23 @@ Global
 		{C1F7D431-C53C-433C-9B07-B69C4064B0A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1F7D431-C53C-433C-9B07-B69C4064B0A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1F7D431-C53C-433C-9B07-B69C4064B0A7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E5309C8C-9319-4F39-9AED-15398A76AB3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E5309C8C-9319-4F39-9AED-15398A76AB3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E5309C8C-9319-4F39-9AED-15398A76AB3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E5309C8C-9319-4F39-9AED-15398A76AB3F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E9ED8001-11B2-4661-9F1C-C97A47FF79A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E9ED8001-11B2-4661-9F1C-C97A47FF79A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9ED8001-11B2-4661-9F1C-C97A47FF79A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9ED8001-11B2-4661-9F1C-C97A47FF79A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{606BA2A8-A7F9-4B17-82C0-3583FAE9107B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{606BA2A8-A7F9-4B17-82C0-3583FAE9107B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{606BA2A8-A7F9-4B17-82C0-3583FAE9107B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{606BA2A8-A7F9-4B17-82C0-3583FAE9107B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5309C8C-9319-4F39-9AED-15398A76AB3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5309C8C-9319-4F39-9AED-15398A76AB3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5309C8C-9319-4F39-9AED-15398A76AB3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5309C8C-9319-4F39-9AED-15398A76AB3F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E5309C8C-9319-4F39-9AED-15398A76AB3F} = {2391D141-07D7-4FD1-9CE0-3075B1AEFDE8}
 	EndGlobalSection
 EndGlobal
