@@ -24,6 +24,36 @@ namespace GeoCache.Common
         /// </summary>
         private IFeature _currentFeature;
 
+        /// <summary>
+        /// Features count
+        /// </summary>
+        private readonly int _count;
+
+        /// <summary>
+        /// Actual index
+        /// </summary>
+        private int _actual;
+
+        /// <summary>
+        /// Chunck number
+        /// </summary>
+        private readonly int _chunck;
+
+        #endregion
+
+        #region Events
+
+        /// <summary>
+        /// Event delegate
+        /// </summary>
+        /// <param name="percentage">percentage</param>
+        public delegate void OnProgressDelegate(int percentage);
+
+        /// <summary>
+        /// Event OnProgress
+        /// </summary>
+        public event OnProgressDelegate OnProgress;
+
         #endregion
 
         #region Constructor
@@ -32,9 +62,13 @@ namespace GeoCache.Common
         /// Constructor
         /// </summary>
         /// <param name="featureCursor">feature cursor</param>
-        public FeatureCursor(IFeatureCursor featureCursor)
+        /// <param name="featureCount">Feature count</param>
+        public FeatureCursor(IFeatureCursor featureCursor, int featureCount)
         {
+            this._count = featureCount;
             this._cursor = featureCursor;
+
+            this._chunck = this._count / 100;
         }
 
         #endregion
@@ -59,7 +93,14 @@ namespace GeoCache.Common
         /// <returns>True if exists next</returns>
         public bool MoveNext()
         {
-            return (this._currentFeature = this._cursor.NextFeature()) != null;
+            var hasNext = (this._currentFeature = this._cursor.NextFeature()) != null;
+
+            if (hasNext && ++this._actual % this._chunck == 0)
+            {
+                OnProgress(this._actual / this._chunck);
+            }
+
+            return hasNext;
         }
 
         /// <summary>
@@ -77,7 +118,7 @@ namespace GeoCache.Common
         {
             get
             {
-                return this.Parser(this._currentFeature);
+                return Parser(this._currentFeature);
             }
         }
 
@@ -123,10 +164,10 @@ namespace GeoCache.Common
         /// </summary>
         /// <param name="feature">Feature</param>
         /// <returns>Generic geometry</returns>
-        private IGeometry Parser(IFeature feature)
+        private static IGeometry Parser(IFeature feature)
         {
-            //TODO: Implement!
-            return null;
+            var envelope = feature.Extent;
+            return new Geometry.Geometry(envelope.XMax, envelope.XMin, envelope.YMax, envelope.YMin);
         }
 
         #endregion

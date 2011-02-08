@@ -53,6 +53,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GeoCache.Common\GeoCache.Common.csproj">
+      <Project>{C1F7D431-C53C-433C-9B07-B69C4064B0A7}</Project>
+      <Name>GeoCache.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GeoCache.Contracts\GeoCache.Contracts.csproj">
       <Project>{E9ED8001-11B2-4661-9F1C-C97A47FF79A2}</Project>
       <Name>GeoCache.Contracts</Name>

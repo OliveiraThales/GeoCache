@@ -11,7 +11,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2391D141
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoCache.Common.Test", "Tests\GeoCache.Common.Test\GeoCache.Common.Test.csproj", "{E5309C8C-9319-4F39-9AED-15398A76AB3F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoCache.Cache.Test", "Tests\GeoCache.Cache.Test\GeoCache.Cache.Test.csproj", "{5A208ECF-04DC-4EF8-BA29-9E5770C31196}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9CB519C5-B005-4CB2-82E3-D79A6F6B7F04}"
+	ProjectSection(SolutionItems) = preProject
+		GeoCache.vsmdi = GeoCache.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = GeoCache.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -33,11 +45,17 @@ Global
 		{E5309C8C-9319-4F39-9AED-15398A76AB3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5309C8C-9319-4F39-9AED-15398A76AB3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5309C8C-9319-4F39-9AED-15398A76AB3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A208ECF-04DC-4EF8-BA29-9E5770C31196}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A208ECF-04DC-4EF8-BA29-9E5770C31196}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A208ECF-04DC-4EF8-BA29-9E5770C31196}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A208ECF-04DC-4EF8-BA29-9E5770C31196}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E5309C8C-9319-4F39-9AED-15398A76AB3F} = {2391D141-07D7-4FD1-9CE0-3075B1AEFDE8}
+		{5A208ECF-04DC-4EF8-BA29-9E5770C31196} = {2391D141-07D7-4FD1-9CE0-3075B1AEFDE8}
+		{9CB519C5-B005-4CB2-82E3-D79A6F6B7F04} = {2391D141-07D7-4FD1-9CE0-3075B1AEFDE8}
 	EndGlobalSection
 EndGlobal

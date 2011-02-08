@@ -40,6 +40,10 @@
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.Geometry, Version=10.0.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.System, Version=10.0.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -62,6 +66,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FeatureCursor.cs" />
+    <Compile Include="Geometry\Envelope.cs" />
+    <Compile Include="Geometry\Geometry.cs" />
     <Compile Include="GeoRepository\GeoRepository.cs" />
     <Compile Include="LicenseManager\LicenseInitializer.cs" />
     <Compile Include="Repository\MongoRepository.cs" />
@@ -73,6 +79,7 @@
       <Name>GeoCache.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

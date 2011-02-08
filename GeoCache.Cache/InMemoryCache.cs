@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using GisSharpBlog.NetTopologySuite.Geometries;
 using GisSharpBlog.NetTopologySuite.Index.Quadtree;
 using GisSharpBlog.NetTopologySuite.Index.Strtree;
@@ -7,6 +8,8 @@ using GeoCache.Contracts;
 
 namespace GeoCache.Cache
 {
+    using GeoCache.Common;
+
     /// <summary>
     /// InMemeory implementation of ICache
     /// </summary>
@@ -36,6 +39,21 @@ namespace GeoCache.Cache
 
         #endregion
 
+        #region Events
+
+        /// <summary>
+        /// Event delegate
+        /// </summary>
+        /// <param name="percentage">percentage</param>
+        public delegate void OnProgressDelegate(int percentage);
+
+        /// <summary>
+        /// Event OnProgress
+        /// </summary>
+        public event OnProgressDelegate OnProgress;
+
+        #endregion
+
         #region Constructor
 
         /// <summary>
@@ -58,11 +76,10 @@ namespace GeoCache.Cache
         /// <summary>
         /// Build the cache for a featureclass
         /// </summary>
-        /// <param name="fullExtent">Full extent of chache</param>
         /// <param name="featureClassName">FeatureClass name</param>
-        public void BuildCache(IEnvelope fullExtent, string featureClassName)
+        public void BuildCache(string featureClassName)
         {
-            this.BuildGrid(fullExtent);
+            this.BuildGrid(this._repository.GetFullExtent(featureClassName));
             this.AddGeometries(this._repository.GetAll(featureClassName));
         }
 
@@ -74,7 +91,28 @@ namespace GeoCache.Cache
         /// <returns>True if data exists in cache</returns>
         public bool RetriveData(IEnvelope envelop, ref IList<IGeometry> outerData)
         {
-            return false;
+            if(outerData == null)
+            {
+                outerData = new List<IGeometry>();
+            }
+
+            var envelope = GetEnvelopeFromGenericEnvelope(envelop);
+            var quad = this._indexBound.Query(envelope);
+
+            foreach (var frame in quad)
+            {
+                var tree = frame as STRtree;
+                if (tree != null)
+                {
+                    var result = tree.Query(envelope);
+                    foreach (var item in result)
+                    {
+                        outerData.Add(item as IGeometry);
+                    }
+                }
+            }
+
+            return outerData.Count > 0;
         }
 
         #endregion
@@ -87,6 +125,12 @@ namespace GeoCache.Cache
         /// <param name="geometries">IEnumable of geometries</param>
         private void AddGeometries(IEnumerable<IGeometry> geometries)
         {
+            if (geometries is FeatureCursor)
+            {
+                var temp = geometries as FeatureCursor;
+                temp.OnProgress += new FeatureCursor.OnProgressDelegate(this.OnProgress);
+            }
+
             foreach (var geometry in geometries)
             {
                 var envelope = GetEnvelopeFromGenericEnvelope(geometry.Envelop);

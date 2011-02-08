@@ -10,9 +10,8 @@ namespace GeoCache.Contracts
         /// <summary>
         /// Build a cache for a especific featureClass and extent
         /// </summary>
-        /// <param name="fullExtent">Full extent for cache</param>
         /// <param name="featureClassName">FeatureClass name</param>
-        void BuildCache(IEnvelope fullExtent, string featureClassName);
+        void BuildCache(string featureClassName);
 
         /// <summary>
         /// Retrive data from cache

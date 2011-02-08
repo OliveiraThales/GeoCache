@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using ESRI.ArcGIS.Geodatabase;
 using GeoCache.Contracts;
+using ESRI.ArcGIS.DataSourcesGDB;
+using ESRI.ArcGIS.esriSystem;
+using GeoCache.Common.LicenseManager;
 
 namespace GeoCache.Common.GeoRepository
 {
-    using ESRI.ArcGIS.DataSourcesGDB;
-    using ESRI.ArcGIS.esriSystem;
-
-    using GeoCache.Common.LicenseManager;
+    using GeoCache.Common.Geometry;
 
     /// <summary>
     /// Geo Repository to retrive data from sde
@@ -91,7 +91,22 @@ namespace GeoCache.Common.GeoRepository
         /// <returns>Enumerable of geometries</returns>
         public IEnumerable<IGeometry> GetAll(string featureClassName)
         {
-            return new FeatureCursor(this.OpenFeatureClass(featureClassName).Search(null, false));
+            var feature = this.OpenFeatureClass(featureClassName);
+            var filter = new QueryFilterClass() { WhereClause = "OBJECTID < 10000" };
+            return new FeatureCursor(feature.Search(filter, false), feature.FeatureCount(filter));
+        }
+
+        /// <summary>
+        /// Get full extent of featureClass
+        /// </summary>
+        /// <param name="featureClassName">FeatureClass name</param>
+        /// <returns>Envelope</returns>
+        public IEnvelope GetFullExtent(string featureClassName)
+        {
+            var dataset = (IGeoDataset)this.OpenFeatureClass(featureClassName);
+            var extent = dataset.Extent;
+
+            return new Envelope(extent.XMax, extent.XMin, extent.YMax, extent.YMin);
         }
 
         #endregion
@@ -102,7 +117,7 @@ namespace GeoCache.Common.GeoRepository
         /// Open a featureClass
         /// </summary>
         /// <param name="featureClass">FeatureClass name</param>
-        public IFeatureClass OpenFeatureClass(string featureClass)
+        private IFeatureClass OpenFeatureClass(string featureClass)
         {
             if (!isOpened)
             {
