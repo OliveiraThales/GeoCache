@@ -43,10 +43,10 @@
   <ItemGroup>
     <Compile Include="ICache.cs" />
     <Compile Include="ICacheManager.cs" />
-    <Compile Include="ICacheRepository.cs" />
+    <Compile Include="INoSqlRepository.cs" />
     <Compile Include="IEnvelope.cs" />
     <Compile Include="IGeometry.cs" />
-    <Compile Include="IGeoRepository.cs" />
+    <Compile Include="IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

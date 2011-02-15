@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using GisSharpBlog.NetTopologySuite.Geometries;
-using GisSharpBlog.NetTopologySuite.Index.Quadtree;
-using GisSharpBlog.NetTopologySuite.Index.Strtree;
+using SharpMap.Utilities.SpatialIndexing;
 using GeoCache.Contracts;
+using GeoCache.Common;
+using GeoCache.Common.Geometry;
+using SharpMap.Geometries;
+using SharpMap.Indexing;
+using IGeometry = GeoCache.Contracts.IGeometry;
 
 namespace GeoCache.Cache
 {
-    using GeoCache.Common;
-
     /// <summary>
     /// InMemeory implementation of ICache
     /// </summary>
@@ -23,19 +24,29 @@ namespace GeoCache.Cache
         private readonly IRepository _repository;
 
         /// <summary>
-        /// Grid Width
-        /// </summary>
-        private readonly int _gridWidth;
-
-        /// <summary>
-        /// Grid Height
-        /// </summary>
-        private readonly int _gridHeight;
-
-        /// <summary>
         /// QuadTree index structure
         /// </summary>
-        private Quadtree _indexBound;
+        private QuadTree _indexBound;
+
+        /// <summary>
+        /// Features count
+        /// </summary>
+        private int _featureCount;
+
+        /// <summary>
+        /// Quarter precision
+        /// </summary>
+        private double _quarterPrecision = 0.001;
+
+        /// <summary>
+        /// Level to create a grid index
+        /// </summary>
+        private int _quarterLevel = 8;
+
+        /// <summary>
+        /// FeatureClass name
+        /// </summary>
+        private string _featureName;
 
         #endregion
 
@@ -60,13 +71,14 @@ namespace GeoCache.Cache
         /// Constructor
         /// </summary>
         /// <param name="repository">The repository</param>
-        /// <param name="gridWidth">Grid width</param>
-        /// <param name="gridHeight">Grid height</param>
-        public InMemoryCache(IRepository repository, int gridWidth, int gridHeight)
+        /// <param name="fullExtent">Full Extent</param>
+        /// <param name="featureClass">FeatureClass name</param>
+        public InMemoryCache(IRepository repository, IEnvelope fullExtent, string featureClass)
         {
             this._repository = repository;
-            this._gridWidth = gridWidth;
-            this._gridHeight = gridHeight;
+            this._featureName = featureClass;
+
+            this.BuildGrid(fullExtent);
         }
 
         #endregion
@@ -74,13 +86,29 @@ namespace GeoCache.Cache
         #region ICache Implementation
 
         /// <summary>
+        /// Build cache based on cursor
+        /// </summary>
+        /// <param name="geometries">Geometries to add</param>
+        public void BuildCursor(IEnumerable<IGeometry> geometries)
+        {
+            this.AddGeometries(geometries);
+        }
+
+        /// <summary>
         /// Build the cache for a featureclass
         /// </summary>
-        /// <param name="featureClassName">FeatureClass name</param>
-        public void BuildCache(string featureClassName)
+        public void BuildAllCache()
         {
-            this.BuildGrid(this._repository.GetFullExtent(featureClassName));
-            this.AddGeometries(this._repository.GetAll(featureClassName));
+            this.AddGeometries(this._repository.GetAll(this._featureName));
+        }
+
+        /// <summary>
+        /// Build a cache for a especific featureClass and extent
+        /// </summary>
+        /// <param name="envelope">Envelope</param>
+        public void BuildEnvelope(IEnvelope envelope)
+        {
+            this.AddGeometries(this._repository.GetByEnvelope(this._featureName, envelope));
         }
 
         /// <summary>
@@ -88,29 +116,37 @@ namespace GeoCache.Cache
         /// </summary>
         /// <param name="envelop">Envelope for search</param>
         /// <param name="outerData">Output data</param>
+        /// <param name="affectedEnvelop">Affected envelop in the grid</param>
         /// <returns>True if data exists in cache</returns>
-        public bool RetriveData(IEnvelope envelop, ref IList<IGeometry> outerData)
+        public bool RetriveData(IEnvelope envelop, ref IList<IGeometry> outerData, ref IEnvelope affectedEnvelop)
         {
             if(outerData == null)
             {
                 outerData = new List<IGeometry>();
             }
 
-            var envelope = GetEnvelopeFromGenericEnvelope(envelop);
-            var quad = this._indexBound.Query(envelope);
+            outerData.Clear();
+
+            var box = new BoundingBox(envelop.MinX, envelop.MinY, envelop.MaxX, envelop.MaxY);
+            var quad = this._indexBound.SearchData(box);
 
             foreach (var frame in quad)
             {
-                var tree = frame as STRtree;
+                var entry = frame as IndexEntry;
+                var tree = entry.Data as DynamicRTree;
+
                 if (tree != null)
                 {
-                    var result = tree.Query(envelope);
+                    var result = tree.Search(box);
                     foreach (var item in result)
                     {
                         outerData.Add(item as IGeometry);
                     }
                 }
             }
+
+            var fullBox = new BoundingBox(quad.Select(x => ((IndexEntry)x).Box).ToArray());
+            affectedEnvelop = new Envelope(fullBox.Max.X, fullBox.Min.X, fullBox.Max.Y, fullBox.Min.Y);
 
             return outerData.Count > 0;
         }
@@ -131,31 +167,27 @@ namespace GeoCache.Cache
                 temp.OnProgress += new FeatureCursor.OnProgressDelegate(this.OnProgress);
             }
 
+            uint id = 0;
             foreach (var geometry in geometries)
             {
-                var envelope = GetEnvelopeFromGenericEnvelope(geometry.Envelop);
-                var query = this._indexBound.Query(envelope);
+                var box = new BoundingBox(
+                    geometry.Envelop.MinX, geometry.Envelop.MinY, geometry.Envelop.MaxX, geometry.Envelop.MaxY);
 
-                foreach (var cel in query)
+                var result = this._indexBound.SearchData(box);
+
+                foreach (var cel in result)
                 {
-                    var index = cel as STRtree;
-
+                    var entry = cel as IndexEntry;
+                    var index = entry.Data as DynamicRTree;
+                    
                     if (index != null)
                     {
-                        index.Insert(envelope, geometry);
+                        this._featureCount++;
+                        index.Insert(id, box, geometry);
+                        id++;
                     }
                 }
             }   
-        }
-
-        /// <summary>
-        /// Get the envelope to do a search
-        /// </summary>
-        /// <param name="envelop">Generic envelop</param>
-        /// <returns>Envelope for a search</returns>
-        private static GeoAPI.Geometries.IEnvelope GetEnvelopeFromGenericEnvelope(IEnvelope envelop)
-        {
-            return new Envelope(envelop.MaxX, envelop.MinX, envelop.MaxY, envelop.MinY);
         }
 
         /// <summary>
@@ -164,32 +196,100 @@ namespace GeoCache.Cache
         /// <param name="envelop">Full extent envelop</param>
         private void BuildGrid(IEnvelope envelop)
         {
-            var numColumns = Math.Ceiling(envelop.Width / this._gridWidth);
-            var numLines = Math.Ceiling(envelop.Height / this._gridHeight);
-
-            this._indexBound = new Quadtree();
-
-            double y1 = envelop.MinY;
-            double y2 = y1 + this._gridHeight;
-
-            for (double i = 1; i <= numLines; i++)
+            if (this._indexBound == null)
             {
-                double x1 = envelop.MinX;
-                double x2 = x1 + this._gridWidth;
-
-                for (double j = 1; j <= numColumns; j++)
-                {
-                    var envelope = new Envelope(x1, x2, y1, y2);
-
-                    this._indexBound.Insert(envelope, new STRtree());
-
-                    x1 += this._gridWidth;
-                    x2 += this._gridWidth;
-                }
-
-                y1 += this._gridHeight;
-                y2 += this._gridHeight;
+                this._indexBound = this.CreateSpatialIndex(envelop);
             }
+        }
+
+        /// <summary>
+        /// Generates a spatial index for a specified shape file.
+        /// </summary>
+        private QuadTree CreateSpatialIndex(IEnvelope envelop)
+        {
+            var objList = new List<QuadTree.BoxObjects>();
+            uint i = 0;
+            foreach (BoundingBox box in GetAllFeatureBoundingBoxes(envelop))
+            {
+                if (!double.IsNaN(box.Left) && !double.IsNaN(box.Right) && !double.IsNaN(box.Bottom) &&
+                    !double.IsNaN(box.Top))
+                {
+                    var g = new QuadTree.BoxObjects { box = box, ID = i, Data = new IndexEntry { Box = box, Data = new DynamicRTree() } };
+                    objList.Add(g);
+                    i++;
+                }
+            }
+
+            Heuristic heur;
+            heur.maxdepth = (int)Math.Ceiling(Math.Log(objList.Count, 2));
+            heur.minerror = 10;
+            heur.tartricnt = 5;
+            heur.mintricnt = 2;
+
+            return new QuadTree(objList, 0, heur);
+        }
+
+        /// <summary>
+		/// Reads all boundingboxes of features in the shapefile. This is used for spatial indexing.
+		/// </summary>
+		/// <returns></returns>
+        private IEnumerable<BoundingBox> GetAllFeatureBoundingBoxes(IEnvelope envelop)
+        {
+            var fullExtent = new BoundingBox(envelop.MinX, envelop.MinY, envelop.MaxX, envelop.MaxY);
+            var list = new List<BoundingBox>();
+
+            BuildQuarter(fullExtent, 2, ref list);
+
+            return list.AsEnumerable();
+        }
+
+        /// <summary>
+        /// Build a quarter for index
+        /// </summary>
+        /// <param name="envelope">Envelope</param>
+        /// <param name="level">level</param>
+        /// <param name="order">list of objects</param>
+        private void BuildQuarter(BoundingBox envelope, int level, ref List<BoundingBox> order)
+        {
+            if (level > this._quarterLevel)
+                return;
+
+            var quarter1 = new BoundingBox(
+                envelope.Min.X,
+                envelope.Min.Y,
+                envelope.Min.X + (envelope.Width / 2) - this._quarterPrecision,
+                envelope.Min.Y + (envelope.Height / 2) - this._quarterPrecision);
+
+            var quarter2 = new BoundingBox(
+                envelope.Min.X + (envelope.Width / 2),
+                envelope.Min.Y,
+                envelope.Max.X,
+                envelope.Min.Y + (envelope.Height / 2) - this._quarterPrecision);
+
+            var quarter3 = new BoundingBox(
+                envelope.Min.X,
+                envelope.Min.Y + (envelope.Height / 2),
+                envelope.Min.X + (envelope.Width / 2) - this._quarterPrecision,
+                envelope.Max.Y);
+
+            var quarter4 = new BoundingBox(
+                envelope.Min.X + (envelope.Width / 2),
+                envelope.Min.Y + (envelope.Height / 2),
+                envelope.Max.X,
+                envelope.Max.Y);
+
+            if (level == this._quarterLevel)
+            {
+                order.Add(quarter1);
+                order.Add(quarter2);
+                order.Add(quarter3);
+                order.Add(quarter4);    
+            }
+
+            this.BuildQuarter(quarter1, level * 2, ref order);
+            this.BuildQuarter(quarter2, level * 2, ref order);
+            this.BuildQuarter(quarter3, level * 2, ref order);
+            this.BuildQuarter(quarter4, level * 2, ref order);
         }
 
         #endregion

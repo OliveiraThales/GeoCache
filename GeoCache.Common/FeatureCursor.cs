@@ -95,7 +95,7 @@ namespace GeoCache.Common
         {
             var hasNext = (this._currentFeature = this._cursor.NextFeature()) != null;
 
-            if (hasNext && ++this._actual % this._chunck == 0)
+            if (OnProgress != null && hasNext && ++this._actual % this._chunck == 0)
             {
                 OnProgress(this._actual / this._chunck);
             }
@@ -167,7 +167,10 @@ namespace GeoCache.Common
         private static IGeometry Parser(IFeature feature)
         {
             var envelope = feature.Extent;
-            return new Geometry.Geometry(envelope.XMax, envelope.XMin, envelope.YMax, envelope.YMin);
+            var geometry = new Geometry.Geometry(envelope.XMax + 1, envelope.XMin - 1, envelope.YMax + 1, envelope.YMin - 1)
+                { Oid = feature.OID };
+
+            return geometry;
         }
 
         #endregion

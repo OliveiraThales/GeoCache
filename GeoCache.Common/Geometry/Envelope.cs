@@ -2,9 +2,12 @@
 
 namespace GeoCache.Common.Geometry
 {
+    using System;
+
     /// <summary>
     /// Generic envelope
     /// </summary>
+    [Serializable]
     public class Envelope : IEnvelope
     {
         #region Constructor

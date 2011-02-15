@@ -2,20 +2,14 @@
 
 namespace GeoCache.Common.Geometry
 {
+    using System;
+
     /// <summary>
     /// Generic Geometry
     /// </summary>
+    [Serializable]
     public class Geometry : IGeometry
     {
-        #region Fields
-
-        /// <summary>
-        /// envelope
-        /// </summary>
-        private readonly IEnvelope _envelop;
-
-        #endregion
-
         #region Constructor
 
         /// <summary>
@@ -27,7 +21,7 @@ namespace GeoCache.Common.Geometry
         /// <param name="minY">minY</param>
         public Geometry(double maxX, double minX, double maxY, double minY)
         {
-            this._envelop = new Envelope(maxX, minX, maxY, minY);
+            this.Envelop = new Envelope(maxX, minX, maxY, minY);
         }
 
         #endregion
@@ -37,14 +31,13 @@ namespace GeoCache.Common.Geometry
         /// <summary>
         /// Envelope
         /// </summary>
-        public IEnvelope Envelop
-        {
-            get
-            {
-                return this._envelop;
-            }
-        }
+        public IEnvelope Envelop { get; set; }
 
+        /// <summary>
+        /// Object ID
+        /// </summary>
+        public int Oid { get; set; }
+        
         #endregion
     }
 }

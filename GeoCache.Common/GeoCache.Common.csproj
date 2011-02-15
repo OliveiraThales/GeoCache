@@ -68,7 +68,7 @@
     <Compile Include="FeatureCursor.cs" />
     <Compile Include="Geometry\Envelope.cs" />
     <Compile Include="Geometry\Geometry.cs" />
-    <Compile Include="GeoRepository\GeoRepository.cs" />
+    <Compile Include="Repository\SdeRepository.cs" />
     <Compile Include="LicenseManager\LicenseInitializer.cs" />
     <Compile Include="Repository\MongoRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
