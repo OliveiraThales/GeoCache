@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="SLMaps.GeoRSSViewer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:esri="clr-namespace:ESRI.ArcGIS.Client;assembly=ESRI.ArcGIS.Client"
+    xmlns:basics="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+    xmlns:esriWidgets="clr-namespace:ESRI.ArcGIS.Client.Toolkit;assembly=ESRI.ArcGIS.Client.Toolkit"
+    xmlns:slContrib="clr-namespace:Vishcious.ArcGIS.SLContrib;assembly=Vishcious.ArcGIS.SLContrib">
+    
+    <Grid x:Name="LayoutRoot" Background="Black" ShowGridLines="True" >
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBlock Foreground="White" FontSize="14"
+                       Text="Please enter the URL of the GeoRSS feed to load : "/>
+            <TextBox x:Name="txtGeoRSSurl" FontSize="14"
+                     Width="500" Margin="5,0,5,0"/>
+            <Button x:Name="btnLoadGeoRSS" Content="Load GeoRSS" FontSize="14"
+                    Click="btnLoadGeoRSS_Click"/>
+        </StackPanel>
+
+        <esri:Map x:Name="MyMap" Grid.Row="1"
+                  Loaded="MyMap_Loaded">
+            <esri:Map.Layers>
+                <esri:ArcGISTiledMapServiceLayer 
+                    ID="StreetMapLayer" 
+                    Url="http://server.arcgisonline.com/ArcGIS/rest/services/ESRI_Imagery_World_2D/MapServer"/>
+
+                <slContrib:GeoRSSLayer ID="geoRSSLayer" URL="http://earthquake.usgs.gov/eqcenter/catalogs/eqs7day-M5.xml" />
+
+            </esri:Map.Layers>
+        </esri:Map>
+
+        <Canvas >
+            <esriWidgets:MapTip x:Name="MyMapTip" BorderBrush="#99000000" 
+                BorderThickness="1" Title="GeoRSS Info" VerticalOffset="10" 
+                HorizontalOffset="10" Background="#DDFFFFFF"/>
+        </Canvas>
+
+    </Grid>
+</UserControl>

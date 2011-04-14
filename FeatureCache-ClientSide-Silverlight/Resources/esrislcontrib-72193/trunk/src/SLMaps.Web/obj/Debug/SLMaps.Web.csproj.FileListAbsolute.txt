@@ -1,0 +1,5 @@
+C:\Gabriel\Imagem\Projetos\FeatureCache\Resources\esrislcontrib-72193\trunk\src\SLMaps.Web\bin\SLMaps.Web.dll
+C:\Gabriel\Imagem\Projetos\FeatureCache\Resources\esrislcontrib-72193\trunk\src\SLMaps.Web\bin\SLMaps.Web.pdb
+C:\Gabriel\Imagem\Projetos\FeatureCache\Resources\esrislcontrib-72193\trunk\src\SLMaps.Web\obj\Debug\ResolveAssemblyReference.cache
+C:\Gabriel\Imagem\Projetos\FeatureCache\Resources\esrislcontrib-72193\trunk\src\SLMaps.Web\obj\Debug\SLMaps.Web.dll
+C:\Gabriel\Imagem\Projetos\FeatureCache\Resources\esrislcontrib-72193\trunk\src\SLMaps.Web\obj\Debug\SLMaps.Web.pdb

@@ -1,0 +1,7 @@
+C:\Gabriel\Imagem\Projetos\FeatureCache\Modules\FeatureService\FeatureService\bin\FeatureService.dll
+C:\Gabriel\Imagem\Projetos\FeatureCache\Modules\FeatureService\FeatureService\bin\FeatureService.pdb
+C:\Gabriel\Imagem\Projetos\FeatureCache\Modules\FeatureService\FeatureService\obj\Debug\ResolveAssemblyReference.cache
+C:\Gabriel\Imagem\Projetos\FeatureCache\Modules\FeatureService\FeatureService\obj\Debug\FeatureService.dll
+C:\Gabriel\Imagem\Projetos\FeatureCache\Modules\FeatureService\FeatureService\obj\Debug\FeatureService.pdb
+C:\Gabriel\Imagem\Projetos\FeatureCache\Modules\FeatureService\FeatureService\bin\GeoJSON.dll
+C:\Gabriel\Imagem\Projetos\FeatureCache\Modules\FeatureService\FeatureService\bin\Newtonsoft.Json.dll

@@ -1,0 +1,122 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="D2C4E3AC-4F45-42B7-96BE-EEA8912F55F5/f:MapDrawingExtensionMethods.cs" caret="492" fromTop="6" />
+      <File id="D2C4E3AC-4F45-42B7-96BE-EEA8912F55F5/f:GraphicsLayerExtensionMethods.cs" caret="684" fromTop="11" />
+      <File id="5F731459-A310-4239-8698-FA49D3A41FFB/f:Page.xaml" caret="1383" fromTop="18" />
+      <File id="BDC80D5F-F084-4CEC-8D98-86F634627A86/f:Silverlight.js" caret="0" fromTop="0" />
+      <File id="BDC80D5F-F084-4CEC-8D98-86F634627A86/f:Data.txt" caret="0" fromTop="0" />
+      <File id="BDC80D5F-F084-4CEC-8D98-86F634627A86/f:getgeojson.txt" caret="9" fromTop="0" />
+      <File id="5F731459-A310-4239-8698-FA49D3A41FFB/f:GeoRSSViewer.xaml" caret="231" fromTop="0" />
+      <File id="BDC80D5F-F084-4CEC-8D98-86F634627A86/f:Web.config" caret="286" fromTop="10" />
+      <File id="BDC80D5F-F084-4CEC-8D98-86F634627A86/f:SLMapsTestPage.html" caret="0" fromTop="0" />
+      <File id="BDC80D5F-F084-4CEC-8D98-86F634627A86/f:SLMapsTestPage.aspx" caret="2621" fromTop="24" />
+      <File id="5F731459-A310-4239-8698-FA49D3A41FFB/f:App.xaml" caret="0" fromTop="0" />
+      <File id="9034F2BD-EA21-422F-BD38-04591734A981/f:Web.config" caret="507" fromTop="10" />
+      <File id="9034F2BD-EA21-422F-BD38-04591734A981/f:Global.asax.cs" caret="497" fromTop="16" />
+      <File id="5F731459-A310-4239-8698-FA49D3A41FFB/f:GeoJSONViewer.xaml.cs" caret="1385" fromTop="21" />
+      <File id="D2C4E3AC-4F45-42B7-96BE-EEA8912F55F5/d:GeoJSONLayer/f:GeoJSONReader.cs" caret="6414" fromTop="15" />
+      <File id="9034F2BD-EA21-422F-BD38-04591734A981/f:MyFeatureCollection.cs" caret="215" fromTop="9" />
+      <File id="9034F2BD-EA21-422F-BD38-04591734A981/f:MyProperties.cs" caret="155" fromTop="6" />
+      <File id="D4A7D921-B587-46E4-BBC8-F908DB08BF82/f:proxy.config" caret="304" fromTop="4" />
+      <File id="5F731459-A310-4239-8698-FA49D3A41FFB/f:App.xaml.cs" caret="1052" fromTop="14" />
+      <File id="D2C4E3AC-4F45-42B7-96BE-EEA8912F55F5/d:GeoJSONLayer/f:GeoJSONLayer.cs" caret="2746" fromTop="15" />
+      <File id="D2C4E3AC-4F45-42B7-96BE-EEA8912F55F5/f:Utils.cs" caret="553" fromTop="3" />
+      <File id="5F731459-A310-4239-8698-FA49D3A41FFB/f:GeoJSONViewer.xaml" caret="1940" fromTop="22" />
+      <File id="D4A7D921-B587-46E4-BBC8-F908DB08BF82/f:proxy.ashx" caret="3134" fromTop="26" />
+      <File id="9034F2BD-EA21-422F-BD38-04591734A981/f:Service1.cs" caret="2366" fromTop="8" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="9034F2BD-EA21-422F-BD38-04591734A981/f:MyProperties.cs" caret="365" fromTop="14" />
+      <File id="9034F2BD-EA21-422F-BD38-04591734A981/f:MyProperties.cs" caret="365" fromTop="16" />
+      <File id="9034F2BD-EA21-422F-BD38-04591734A981/f:MyProperties.cs" caret="89" fromTop="0" />
+      <File id="9034F2BD-EA21-422F-BD38-04591734A981/f:MyProperties.cs" caret="368" fromTop="16" />
+      <File id="9034F2BD-EA21-422F-BD38-04591734A981/f:MyFeatureCollection.cs" caret="439" fromTop="10" />
+      <File id="9034F2BD-EA21-422F-BD38-04591734A981/f:MyFeatureCollection.cs" caret="140" fromTop="3" />
+      <File id="9034F2BD-EA21-422F-BD38-04591734A981/f:MyFeatureCollection.cs" caret="388" fromTop="7" />
+      <File id="9034F2BD-EA21-422F-BD38-04591734A981/f:Service1.cs" caret="3515" fromTop="17" />
+      <File id="9034F2BD-EA21-422F-BD38-04591734A981/f:Service1.cs" caret="6100" fromTop="12" />
+      <File id="9034F2BD-EA21-422F-BD38-04591734A981/f:MyFeatureCollection.cs" caret="177" fromTop="8" />
+      <File id="9034F2BD-EA21-422F-BD38-04591734A981/f:MyProperties.cs" caret="256" fromTop="11" />
+      <File id="9034F2BD-EA21-422F-BD38-04591734A981/f:MyFeatureCollection.cs" caret="411" fromTop="16" />
+      <File id="9034F2BD-EA21-422F-BD38-04591734A981/f:Service1.cs" caret="3785" fromTop="12" />
+      <File id="9034F2BD-EA21-422F-BD38-04591734A981/f:Service1.cs" caret="4152" fromTop="16" />
+      <File id="9034F2BD-EA21-422F-BD38-04591734A981/f:Service1.cs" caret="2867" fromTop="7" />
+      <File id="9034F2BD-EA21-422F-BD38-04591734A981/f:Service1.cs" caret="3233" fromTop="8" />
+      <File id="9034F2BD-EA21-422F-BD38-04591734A981/f:Service1.cs" caret="4942" fromTop="8" />
+      <File id="9034F2BD-EA21-422F-BD38-04591734A981/f:Service1.cs" caret="2483" fromTop="13" />
+      <File id="BDC80D5F-F084-4CEC-8D98-86F634627A86/f:getgeojson.txt" caret="2" fromTop="0" />
+      <File id="9034F2BD-EA21-422F-BD38-04591734A981/f:Web.config" caret="556" fromTop="12" />
+      <File id="D2C4E3AC-4F45-42B7-96BE-EEA8912F55F5/f:Utils.cs" caret="766" fromTop="12" />
+      <File id="9034F2BD-EA21-422F-BD38-04591734A981/f:Service1.cs" caret="4619" fromTop="11" />
+      <File id="9034F2BD-EA21-422F-BD38-04591734A981/f:Service1.cs" caret="4832" fromTop="15" />
+      <File id="D4A7D921-B587-46E4-BBC8-F908DB08BF82/f:proxy.ashx" caret="1171" fromTop="12" />
+      <File id="5F731459-A310-4239-8698-FA49D3A41FFB/f:GeoJSONViewer.xaml" caret="1897" fromTop="20" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir>C:\Program Files (x86)\NUnit 2.5.3\bin\net-2.0\</NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="public" priority="2" />
+      <Item value="String`0" priority="1" />
+      <Item value="private" priority="0" />
+      <Item value="using" priority="1" />
+      <Item value="GeoJSON" priority="2" />
+      <Item value="class" priority="0" />
+      <Item value="var" priority="3" />
+      <Item value="new" priority="4" />
+      <Item value="MyFeature" priority="1" />
+      <Item value="Lat" priority="0" />
+      <Item value="long" priority="0" />
+      <Item value="StringBuilder`0" priority="0" />
+      <Item value="return" priority="0" />
+      <Item value="WebMessageBodyStyle`0" priority="0" />
+      <Item value="RequestFormat" priority="1" />
+      <Item value="BodyStyle" priority="0" />
+      <Item value="WebMessageFormat`0" priority="1" />
+      <Item value="ResponseFormat" priority="0" />
+      <Item value="string" priority="0" />
+      <Item value="StreamReader`0" priority="0" />
+      <Item value="x" priority="0" />
+      <Item value="byte" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FeatureService.MyFeatureCollection">
+      <Item value="Features" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.ServiceModel.Web.WebMessageBodyStyle">
+      <Item value="WrappedRequest" priority="0" />
+      <Item value="Bare" priority="0" />
+      <Item value="Wrapped" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.ServiceModel.Web.WebMessageFormat">
+      <Item value="Json" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.String">
+      <Item value="Replace`0" priority="1" />
+      <Item value="Substring`0" priority="1" />
+      <Item value="Length" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.IO.StreamReader">
+      <Item value="ToString`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Text.StringBuilder">
+      <Item value="Length" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+</Configuration>

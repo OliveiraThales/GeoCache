@@ -1,0 +1,3573 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ESRI.ArcGIS.Client.Toolkit</name>
+    </assembly>
+    <members>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel">
+            <summary>
+            Represents a layer in the TOC/legend.
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.Primitives.LegendItemViewModel">
+            <summary>
+            Represents a basic item in the legend/TOC.
+            A basic item contains a label and an image. 
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.LegendItemViewModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.Primitives.LegendItemViewModel"/> class.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.LegendItemViewModel.#ctor(ESRI.ArcGIS.Client.LegendItemInfo)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.Primitives.LegendItemViewModel"/> class from a <see cref="T:ESRI.ArcGIS.Client.LegendItemInfo"/>.
+            </summary>
+            <param name="legendItemInfo">The legend item info.</param>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LegendItemViewModel.Label">
+            <summary>
+            Legend item label.
+            </summary>
+            <value>The label.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LegendItemViewModel.ImageSource">
+            <summary>
+            Legend item image source.
+            </summary>
+            <value>The image source.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LegendItemViewModel.Description">
+            <summary>
+            The description of the legend item.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LegendItemViewModel.LayerItemsSource">
+            <summary>
+            Gets the children of the legend item. 
+            </summary>
+            <value>The children. Note that a basic item returns always null but the method can be overridden by inherited classes.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LegendItemViewModel.IsSelected">
+            <summary>
+            Gets or sets a value indicating whether this instance is selected.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is selected; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LegendItemViewModel.IsExpanded">
+            <summary>
+            Gets or sets a value indicating whether this instance is expanded.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is expanded; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LegendItemViewModel.Template">
+            <summary>
+            Gets the template for this legend item. Depending on the type of item, the template can be the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Legend.LegendItemTemplate"/> , the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Legend.LayerTemplate"/>
+            or the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Legend.MapLayerTemplate"/>.
+            </summary>
+            <value>The template.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LegendItemViewModel.LegendTree">
+            <summary>
+            Gets or sets the parent legend tree.
+            </summary>
+            <value>The legend tree.</value>
+        </member>
+        <member name="E:ESRI.ArcGIS.Client.Toolkit.Primitives.LegendItemViewModel.PropertyChanged">
+            <summary>
+            Occurs when a property value changes.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.#ctor(ESRI.ArcGIS.Client.Layer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel"/> class.
+            </summary>
+            <param name="layer">The layer this item represents.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel"/> class without layer.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.#ctor(ESRI.ArcGIS.Client.Layer,ESRI.ArcGIS.Client.LayerLegendInfo,System.String,ESRI.ArcGIS.Client.Map)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel"/> class from a <see cref="T:ESRI.ArcGIS.Client.LayerLegendInfo"/>..
+            </summary>
+            <param name="layer">The layer.</param>
+            <param name="layerLegendInfo">The layer legend info.</param>
+            <param name="defaultLayerDescription">The default layer description (= the map layer description).</param>
+            <param name="map">The map.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.GetTemplate">
+            <summary>
+            Gets the template.
+            </summary>
+            <returns>The template</returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.UpdateLayerVisibilities(System.Boolean,System.Boolean)">
+            <summary>
+            Updates recursively the properties IsEnabled, IsVisible and IsInScaleRange.
+            </summary>
+            <param name="isParentVisible">The visibility of the parent.</param>
+            <param name="isParentInScaleRange">The scale range status of the parent.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.ConvertToResolution(System.Double,ESRI.ArcGIS.Client.Map)">
+            <summary>
+            Converts to resolution.
+            </summary>
+            <param name="scale">The scale.</param>
+            <param name="map">The map.</param>
+            <returns></returns>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.Layer">
+            <summary>
+            The map layer associated to the layer item.
+            </summary>
+            <value>The layer.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.SubLayerID">
+            <summary>
+            The ID of the sub layer.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.LayerType">
+            <summary>
+            The type of layer.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.MinimumResolution">
+            <summary>
+            The minimum resolution in which this layer can be viewed.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.MaximumResolution">
+            <summary>
+            The maximum scale in which this layer can be viewed.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.IsEnabled">
+            <summary>
+            Whether the layer is currently enabled i.e. is checked on.
+            </summary>
+            <value><c>true</c> if the layer is currently enabled; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.IsVisible">
+            <summary>
+            Whether the layer is currently visible (taking care of ascendants visibility and of scale range).
+            </summary>
+            <value><c>true</c> if the layer is currently visible; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.IsInScaleRange">
+            <summary>
+            Gets or sets a value indicating whether this instance is in the scale range to be visible.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is in scale range; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.IsBusy">
+            <summary>
+            Gets a value indicating whether this the layer is currently loading
+            its legend.
+            </summary>
+            <value><c>true</c> if this instance is busy; otherwise, <c>false</c>.</value>
+            <seealso cref="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.BusyIndicatorVisibility"/>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.BusyIndicatorVisibility">
+            <summary>
+            Gets the busy indicator visibility.
+            The busy indicator is visible while the layer is currently loading its legend.
+            </summary>
+            <remarks>This value makes sense for map layer items.</remarks>
+            <value>The busy indicator visibility.</value>
+            <seealso cref="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.IsBusy"/>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.LayerItems">
+            <summary>
+            The collection of <see cref="T:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel"/> under this layer item.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.LegendItems">
+            <summary>
+            The collection of <see cref="T:ESRI.ArcGIS.Client.Toolkit.Primitives.LegendItemViewModel"/> under this layer item.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.LayerItemsSource">
+            <summary>
+            The enumeration of all legend items (LegendItemViewModel + LayerItemViewModel) displayed under this layer item.
+            This enumeration is depending on the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Legend.LayerItemsMode"/> property and on the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Legend.ShowOnlyVisibleLayers"/> property.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.IsGroupLayer">
+            <summary>
+            Gets a value indicating whether this instance is a group layer.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is group layer; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.LayerItemsOptions">
+            <summary>
+            Gets or sets the layer items options used to get the layer items.
+            </summary>
+            <value>The layer items options.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.IsMapLayer">
+            <summary>
+            Gets a value indicating whether this instance is map layer item.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is map layer item; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.MapUnit">
+            <summary>
+            Unit used by to convert scale to resolution 
+            </summary>
+            <remarks>The integer value of the enums corresponds to 1/10th of a millimeter</remarks>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.MapUnit.esriUnknownUnits">
+            <summary>
+            Undefined
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.MapUnit.esriDecimalDegrees">
+            <summary>
+            Decimal degrees
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.MapUnit.esriInches">
+            <summary>
+            Inches
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.MapUnit.esriFeet">
+            <summary>
+            Feet
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.MapUnit.esriYards">
+            <summary>
+            Yards
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.MapUnit.esriMiles">
+            <summary>
+            Miles
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.MapUnit.esriNauticalMiles">
+            <summary>
+            Nautical Miles
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.MapUnit.esriMillimeters">
+            <summary>
+            Millimeters
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.MapUnit.esriCentimeters">
+            <summary>
+            Centimeters
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.MapUnit.esriDecimeters">
+            <summary>
+            Decimeters
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.MapUnit.esriMeters">
+            <summary>
+            Meters
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.MapUnit.esriKilometers">
+            <summary>
+            Kilometers
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.Bookmark">
+            <summary>
+            Bookmark control
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Bookmark.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.Bookmark"/> class.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Bookmark.#cctor">
+            <summary>
+            Static initialization for the <see cref="T:ESRI.ArcGIS.Client.Toolkit.Bookmark"/> control.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Bookmark.OnApplyTemplate">
+            <summary>
+            When overridden in a derived class, is invoked whenever application code
+            or internal processes (such as a rebuilding layout pass) call 
+            <see cref="M:System.Windows.Controls.Control.ApplyTemplate"/>.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Bookmark.MapProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Bookmark.Map"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Bookmark.AddBookmark(System.String,ESRI.ArcGIS.Client.Geometry.Envelope)">
+            <summary>
+            Adds a bookmark.
+            </summary>
+            <param name="name">Display name.</param>
+            <param name="extent">The extent.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Bookmark.DeleteBookmarkAt(System.Int32)">
+            <summary>
+            Deletes the bookmark at the specified index.
+            </summary>
+            <param name="index">The index.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Bookmark.ClearBookmarks">
+            <summary>
+            Clears the bookmarks.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Bookmark.TitleProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Bookmark.Title"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Bookmark.Bookmarks">
+            <summary>
+            Gets or sets the collection of <see cref="T:ESRI.ArcGIS.Client.Toolkit.Bookmark.MapBookmark">map bookmarks</see>.
+            </summary>
+            <value>The bookmarks.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Bookmark.Map">
+            <summary>
+            Gets or sets the map that the <see cref="T:ESRI.ArcGIS.Client.Toolkit.Bookmark"/> is buddied to.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Bookmark.UseIsolatedStorage">
+            <summary>
+            Gets or sets a value indicating whether to store the booksmarks in the isolated storage.
+            </summary>
+            <value><c>true</c> if bookmarks will be stored between sessions.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Bookmark.Title">
+            <summary>
+            Gets or sets the title.
+            </summary>
+            <value>The title.</value>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.Bookmark.MapBookmark">
+            <summary>
+            Bookmark class for storing named extents
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Bookmark.MapBookmark.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Bookmark.MapBookmark.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Bookmark.MapBookmark.Extent">
+            <summary>
+            Gets or sets the extent.
+            </summary>
+            <value>The extent.</value>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.MapTip">
+            <summary>
+            Graphics Layer MapTip control
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.MapTip.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.MapTip"/> class.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.MapTip.#cctor">
+            <summary>
+            Static initialization for the <see cref="T:ESRI.ArcGIS.Client.Toolkit.MapTip"/> control.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.MapTip.OnApplyTemplate">
+            <summary>
+            When overridden in a derived class, is invoked whenever application code or internal processes (such as a rebuilding layout pass) call <see cref="M:System.Windows.Controls.Control.ApplyTemplate"/>.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.MapTip.Expand(System.Boolean)">
+            <summary>
+            Expands the maptip
+            </summary>
+            <param name="useTransitions">if set to <c>true</c> will use transitions.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.MapTip.Collapse(System.Boolean)">
+            <summary>
+            Collapses the maptip.
+            </summary>
+            <param name="useTransitions">if set to <c>true</c> will use transitions.</param>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.MapTip.GraphicsLayerProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.MapTip.GraphicsLayer"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.MapTip.TitleMemberProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.MapTip.TitleMember"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.MapTip.TitleProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.MapTip.Title"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.MapTip.HorizontalOffsetProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.MapTip.HorizontalOffset"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.MapTip.VerticalOffsetProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.MapTip.VerticalOffset"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.MapTip.ItemsSourceProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.MapTip.ItemsSource"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.MapTip.currentFeature">
+            <summary>The current active feature</summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.MapTip.mouseIsOver">
+            <summary>True if the mouse is over either the graphic or the maptip</summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.MapTip.GraphicsLayer">
+            <summary>
+            Gets or sets the graphics layer that the maptip is associated with.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.MapTip.TitleMember">
+            <summary>
+            Gets or sets the Graphic Attribute Key used for setting the title 
+            on the MapTip. This is overridden if the <see cref="P:ESRI.ArcGIS.Client.Toolkit.MapTip.Title"/> property is set.
+            </summary>
+            <value>The map tip title member.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.MapTip.Title">
+            <summary>
+            Gets or sets the title displayed in the MapTip. It can be a either a string or a FrameworkElement.
+            It will override any settings set using <see cref="P:ESRI.ArcGIS.Client.Toolkit.MapTip.TitleMember"/>.
+            </summary>
+            <value>The map tip title.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.MapTip.HorizontalOffset">
+            <summary>
+            Gets or sets the horizontal offset.
+            </summary>
+            <value>The horizontal offset.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.MapTip.VerticalOffset">
+            <summary>
+            Gets or sets the vertical offset.
+            </summary>
+            <value>The vertical offset.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.MapTip.ItemsSource">
+            <summary>
+            Gets or sets the items source used for data binding.
+            </summary>
+            <value>The items source.</value>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.CollectionExtensions">
+            <summary>
+            IEnumerable extensions : ToObservableCollection, ForEach, Descendants, Leaves
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.CollectionExtensions.ToObservableCollection``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Converts an enumerable to an observable collection.
+            </summary>
+            <typeparam name="T">The type of objects in the enumeration.</typeparam>
+            <param name="enumerable">The enumerable.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.CollectionExtensions.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+             Performs the specified action on each element of the enumeration.
+            </summary>
+            <typeparam name="T">The type of objects in the enumeration.</typeparam>
+            <param name="enumerable">The enumerable.</param>
+            <param name="action">The System.Action delegate to perform on each element of the enumeration.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.CollectionExtensions.Descendants``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Collections.Generic.IEnumerable{``0}})">
+            <summary>
+            Find all descendants from an enumerable.
+            </summary>
+            <typeparam name="T">The type of objects in the enumeration.</typeparam>
+            <param name="enumerable">The enumerable.</param>
+            <param name="childrenDelegate">The children delegate.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.CollectionExtensions.Leaves``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Collections.Generic.IEnumerable{``0}})">
+            <summary>
+            Find all leaves from an enumerable.
+            </summary>
+            <typeparam name="T">The type of objects in the enumeration.</typeparam>
+            <param name="enumerable">The enumerable.</param>
+            <param name="childrenDelegate">The children delegate.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.ToolbarIndexChangedHandler">
+            <summary>
+            Handler for the Toolbar Index Changed
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.ToolbarItemMouseEnter">
+            <summary>
+            Handler for the Toolbar item Mouse enter
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.ToolbarItemMouseLeave">
+            <summary>
+            Handler for the Toolbar item Mouse Leave
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.SelectedToolbarItemArgs">
+            <summary>
+            Used with the Toolbar to pass along Event arguments used with the selected toolbar item.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.SelectedToolbarItemArgs.#ctor(ESRI.ArcGIS.Client.Toolkit.ToolbarItem,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.SelectedToolbarItemArgs"/> class.
+            </summary>
+            <param name="tbarItem">The tbar item.</param>
+            <param name="tbarIndex">Index of the tbar.</param>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.SelectedToolbarItemArgs.Item">
+            <summary>
+            Gets the selected <see cref="T:ESRI.ArcGIS.Client.Toolkit.ToolbarItem"/>.
+            </summary>
+            <value>The <see cref="T:ESRI.ArcGIS.Client.Toolkit.ToolbarItem"/>.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.SelectedToolbarItemArgs.Index">
+            <summary>
+            Gets the index.
+            </summary>
+            <value>The index of the selected <see cref="T:ESRI.ArcGIS.Client.Toolkit.ToolbarItem"/>.</value>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.OverviewMap">
+            <summary>
+            OverviewMap Control
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.OverviewMap.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.OverviewMap"/> class.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.OverviewMap.#cctor">
+            <summary>
+            Static initialization for the <see cref="T:ESRI.ArcGIS.Client.Toolkit.OverviewMap"/> control.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.OverviewMap.OnApplyTemplate">
+            <summary>
+            When overridden in a derived class, is invoked whenever application code 
+            or internal processes (such as a rebuilding layout pass) call
+            <see cref="M:System.Windows.Controls.Control.ApplyTemplate"/>.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.OverviewMap.ArrangeOverride(System.Windows.Size)">
+            <summary>
+            Provides the behavior for the "Arrange" pass of Silverlight layout.
+            Classes can override this method to define their own arrange pass behavior.
+            </summary>
+            <param name="finalSize">The final area within the parent that this
+            object should use to arrange itself and its children.</param>
+            <returns>The actual size used.</returns>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.OverviewMap.MapProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.OverviewMap.Map"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.OverviewMap.MaximumExtentProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.OverviewMap.MaximumExtent"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.OverviewMap.IsStaticProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.OverviewMap.IsStatic"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.OverviewMap.LayerProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.OverviewMap.Layer"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.OverviewMap.Layer_LayersInitialized(System.Object,System.EventArgs)">
+            <summary>
+            Sets extents, limits, and events after layers have been initialized
+            </summary>
+            <param name="sender"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.OverviewMap.UpdateOVMap">
+            <summary>
+            Determines if the OverviewMap extent should be changed. If so, set new 
+            extent and call ZoomTo or PanTo. If not, send to UpdateAOI
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.OverviewMap.UpdateOVMap(System.Object,ESRI.ArcGIS.Client.ExtentEventArgs)">
+            <summary>
+            Overload of UpdateOVMap - ExtentEventHandler version
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.OverviewMap.UpdateAOI">
+            <summary>
+            Sets size and position of AOI Box
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.OverviewMap.UpdateMap">
+            <summary>
+            Set new map extent of main map control. Called after AOI
+            Box has been repositioned by user
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.OverviewMap.Map">
+            <summary>
+            Sets or gets the Map control associated with the OverviewMap.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.OverviewMap.MaximumExtent">
+            <summary>
+            Gets or sets  the maximum map extent of the overview map. 
+            If undefined, the maximum extent is derived from the layer.
+            </summary>
+            <value>The maximum extent.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.OverviewMap.IsStatic">
+            <summary>
+            Gets or sets a value indicating whether the overview map extent is static.
+            </summary>
+            <value>If true the extent of the overview map will never change. </value>
+            <remarks>If true the extent will remain at <see cref="P:ESRI.ArcGIS.Client.Toolkit.OverviewMap.MaximumExtent"/>. If 
+            MaximumExtent is not set the extent will remait at the full extent 
+            of the layer.</remarks>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.OverviewMap.Layer">
+            <summary>
+            Gets or sets the layer used in the overview map.
+            </summary>
+            <value>The layer.</value>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.TemplatePicker">
+            <summary>
+            A template picker control enables selecting feature types to add 
+            when editing a feature layer that is based on a feature service.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.TemplatePicker"/> class.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.#cctor">
+            <summary>
+            Static initialization for the <see cref="T:ESRI.ArcGIS.Client.Toolkit.TemplatePicker"/> control.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.AlwaysDisplayDefaultTemplatesProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.AlwaysDisplayDefaultTemplates"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.AutoSelectProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.AutoSelect"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.AutoCompleteProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.AutoComplete"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.ContinuousProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.Continuous"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.FreehandProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.Freehand"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.GeometryServiceUrlProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.GeometryServiceUrl"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.LayerIDsProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.LayerIDs"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.ShowAttributesOnAddProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.ShowAttributesOnAdd"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.MapProperty">
+            /// <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.Map"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.TemplatesProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.Templates"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.TemplateGroupsProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.TemplateGroups"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.ItemTemplateProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.ItemTemplate"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.OnApplyTemplate">
+            <summary>
+            When overridden in a derived class, is invoked whenever application code
+            or internal processes call <see cref="M:System.Windows.FrameworkElement.ApplyTemplate"/>.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.AlwaysDisplayDefaultTemplates">
+            <summary>
+            Gets or sets a value indicating whether default templates should 
+            always be displayed.
+            </summary>
+            <remarks>
+            Default templates are displayed when no other templates exist.
+            </remarks>
+            <value>
+            	<c>true</c> if [always display default templates]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.AutoSelect">
+            <summary>
+            Gets or sets a value indicating whether selection is automatic 
+            for tools that require it.
+            </summary>
+            <remarks>
+            Tools that use auto selection: Cut, Reshape, Union, and AutoComplete Add
+            </remarks>
+            <value><c>true</c> if [auto select]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.AutoComplete">
+            <summary>
+            Gets or sets a value indicating whether auto completion is enabled 
+            when adding polygons.
+            </summary>
+            <remarks>
+            When AutoComplete is enabled, a line is drawn instead of a polygon 
+            and the rest of the polygon is completed based on snapping to nearby features.
+            </remarks>
+            <value><c>true</c> if [auto complete]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.Continuous">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:ESRI.ArcGIS.Client.Toolkit.TemplatePicker"/> is continuous.
+            </summary>
+            <value><c>true</c> if continuous; otherwise, <c>false</c>.</value>
+            <remarks>
+            The template selected will remain active until a different template is selected.
+            </remarks>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.Freehand">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:ESRI.ArcGIS.Client.Toolkit.TemplatePicker"/> 
+            is using freehand draw mode when using Add, Reshape, Union and Cut.
+            </summary>
+            <value><c>true</c> if freehand; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.GeometryServiceUrl">
+            <summary>
+            Gets or sets the geometry service URL.
+            </summary>
+            <value>The geometry service URL.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.LayerIDs">
+            <summary>
+            Gets or sets the layer IDs of the layers for which templates are displayed.
+            </summary>
+            <remarks>
+            Specified in XAML and in Blend as a comma-delimited string: If a layer 
+            name contains a comma, please use &#44; instead of the comma.
+            If null/empty, templates from all feature layers are used. Order of 
+            the layer ids is respected in generating templates.
+            </remarks>
+            <value>The layer IDs.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.ShowAttributesOnAdd">
+            <summary>
+            Gets or sets a value indicating whether the attributes are shown
+            when a graphic is added to the feature layer
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.Map">
+            <summary>
+            Gets or sets the map that the template picker is buddied to.
+            </summary>
+            <value>The map.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.Templates">
+            <summary>
+            Gets or sets the templates for all of the layers that the Template Picker is working with.
+            </summary>
+            <value>The templates.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.TemplateGroups">
+            <summary>Gets or sets the template groups.</summary>
+            <remarks>Each template group has the templates for a layer</remarks>		
+            <value>The template groups.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.ItemTemplate">
+            <summary>
+            Gets or sets the data template for TemplatePicker
+            </summary>
+        </member>
+        <member name="E:ESRI.ArcGIS.Client.Toolkit.TemplatePicker.EditCompleted">
+            <summary>
+            Occurs when an edit has completed.
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.TemplateGroup">
+            <summary>
+            A group of templates representing a layer in the template picker
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.TemplateGroup.ToString">
+            <summary>
+            Returns the name of the layer.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.TemplateGroup.Name">
+            <summary>
+            Layer name.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.TemplateGroup.Templates">
+            <summary>
+            The templates in a layer.
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.SymbolTemplate">
+            <summary>
+            The template in a template picker layer
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.SymbolTemplate.ToString">
+            <summary>
+            Returns the name of the symbolTemplate.
+            </summary>
+            <returns>The name of the symbolTemplate</returns>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.SymbolTemplate.Name">
+            <summary>
+            The name of the template 
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.SymbolTemplate.TypeID">
+            <summary>
+            The feature type id of the template
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.SymbolTemplate.Symbol">
+            <summary>
+            The symbol for the template
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.SymbolTemplate.Editor">
+            <summary>
+            The editor that executes the Add command
+            </summary>			
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.SymbolTemplate.Description">
+            <summary>
+            The symbol description
+            </summary>			
+        </member>
+        <member name="E:ESRI.ArcGIS.Client.Toolkit.SymbolTemplate.PropertyChanged">
+            <summary>
+            Occurs when a property value changes.
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.Navigation">
+            <summary>
+            Navigation control supporting pan, zoom and rotation.
+            </summary>
+            <remarks>
+            	<para>The Navigation control contains a slider to zoom in and out, 
+            	interactive elements in a ring to rotate the map, and a a set of buttons 
+            	to zoom, pan, zoom to full extent, and reset rotation. The behavior 
+            	of the Navigation control at runtime depends on the content and 
+            	properties of the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Navigation.Map"/> control to which it is bound.</para>
+            	<para>The zoom in\out buttons will zoom using the <see cref="P:Map.ZoomFactor"/>.
+            	The zoom factor must be greater than 1 for the zoom in\out buttons to 
+            	function properly.</para>
+            	<para>The zoom slider will only be displayed if the <see cref="P:Map.MinimumResolution"/> 
+            	and <see cref="P:Map.MaximumResolution"/> resolution on the Map control 
+            	have been defined. If a <see cref="T:ESRI.ArcGIS.Client.TiledMapServiceLayer"/> is present 
+            	in the Map's layer collection, in most cases the minimum and maximum 
+            	resolution will be set for you. If a Map only contains <see cref="T:ESRI.ArcGIS.Client.DynamicLayer"/>,
+                you must set the minimum and maximum resolution explicitly. If 
+                <see cref="P:Map.SnapToLevels"/> is true and the Map contains a tiled 
+                map layer, the Map will zoom in\out only when the zoom slider bar 
+                represents a resolution closer to a different level of detail. This 
+                means small changes in the location of the slider bar may not cause 
+                the Map to zoom in\out. If <see cref="P:Map.SnapToLevels"/> is false 
+                (the default) any change to the slider bar will cause the Map to zoom
+                in\out.</para>
+            </remarks>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Navigation.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.Navigation"/> class.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Navigation.#cctor">
+            <summary>
+            Static initialization for the <see cref="T:ESRI.ArcGIS.Client.Toolkit.Navigation"/> control.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Navigation.OnApplyTemplate">
+            <summary>
+            When overridden in a derived class, is invoked whenever application code or
+            internal processes (such as a rebuilding layout pass) call
+            <see cref="M:System.Windows.Controls.Control.ApplyTemplate"/>.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Navigation.OnMouseLeave(System.Windows.Input.MouseEventArgs)">
+            <summary>
+            Called before the <see cref="E:System.Windows.UIElement.MouseLeave"/> event occurs.
+            </summary>
+            <param name="e">The data for the event.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Navigation.OnMouseEnter(System.Windows.Input.MouseEventArgs)">
+            <summary>
+            Called before the <see cref="E:System.Windows.UIElement.MouseEnter"/> event occurs.
+            </summary>
+            <param name="e">The data for the event.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Navigation.ValueToResolution(System.Double)">
+            <summary>
+            Maps the slider values 0..1 to the map's resolution.
+            </summary>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Navigation.ResolutionToValue(System.Double)">
+            <summary>
+            Maps the map's resolution to a logirithmic scale between 
+            0 and 1 which is used on the slider.
+            </summary>
+            <param name="resolution">The resolution.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Navigation.SetupZoom">
+            <summary>
+            Sets up the parameters of the ZoomSlider
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Navigation.MapProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Navigation.Map"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Navigation.Map">
+            <summary>
+            Gets or sets the map that the scale bar is buddied to.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Navigation.PanFactor">
+            <summary>
+             Factor used in panning map. The factor is used as a portion of current width and height of map extent. Default is 0.5.
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.Primitives.LegendTree">
+            <summary>
+            Internal class encapsulating a layer item representing the virtual root item for the legend tree.
+            The LayerItems collection of this item is the collection of map layer item displayed at the first level of the TOC.
+            This class manages the events coming from the map, from the map layers and from the map layer items.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Primitives.LegendTree._legendItemTemplate">
+            <summary>
+            Gets or sets the legend item template.
+            </summary>
+            <value>The legend item template.</value>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.LegendTree.Refresh">
+            <summary>
+            Refreshes the legend control.
+            </summary>
+            <remarks>Note : In most cases, the control is always up to date without calling the refresh method.</remarks>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LegendTree.LayerTemplate">
+            <summary>
+            Gets or sets the layer template i.e. the template used to display a layer in the legend.
+            </summary>
+            <value>The layer template.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LegendTree.MapLayerTemplate">
+            <summary>
+            Gets or sets the map layer template.
+            </summary>
+            <value>The map layer template.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LegendTree.Map">
+            <summary>
+            Gets or sets the map that the legend control is buddied to.
+            </summary>
+            <value>The map.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LegendTree.LayerIDs">
+            <summary>
+            Gets or sets the layer IDs of the layers participating in the legend.
+            </summary>
+            <remarks>
+            Specified in XAML and in Blend as a comma-delimited string: If a layer 
+            name contains a comma, please use &#44; instead of the comma.
+            If null/empty, legend from all layers is generated. Order of 
+            the layer ids is respected in generating the legend.
+            </remarks>
+            <value>The layer IDs.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LegendTree.ShowOnlyVisibleLayers">
+            <summary>
+            Gets or sets a value indicating whether only the visible layers are participating to the legend.
+            </summary>
+            <value>
+            	<c>true</c> if only the visible layers are participating to the legend; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="E:ESRI.ArcGIS.Client.Toolkit.Primitives.LegendTree.Refreshed">
+            <summary>
+            Occurs when the legend is refreshed. 
+            Give the opportunity for an application to add or remove legend items.
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.Utilities.CodedValueSource">
+            <summary>
+            The CodedValueSource class.
+            </summary>
+            <remarks>Used to populate each entry in the coded value domain.</remarks>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Utilities.CodedValueSource.Code">
+            <summary>
+            Gets or sets the code.
+            </summary>
+            <value>The code.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Utilities.CodedValueSource.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.Utilities.CodedValueSources">
+            <summary>
+            The CodedValueSources class.
+            </summary>
+            <remarks>Used to maintain collection of coded value domains.</remarks>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Utilities.CodedValueSources.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.Utilities.CodedValueSources"/> class.
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.Utilities.CodedValueDomainConverter">
+            <summary>
+            The CodedValueDomainConverter class.
+            </summary>
+            <remarks>Converts codes/values in the given coded value domain.</remarks>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Utilities.CodedValueDomainConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Modifies the source data before passing it to the target for display in the UI.
+            </summary>
+            <param name="value">The source data being passed to the target.</param>
+            <param name="targetType">The <see cref="T:System.Type"/> of data expected by the target dependency property.</param>
+            <param name="parameter">An optional parameter to be used in the converter logic.</param>
+            <param name="culture">The culture of the conversion.</param>
+            <returns>
+            The value to be passed to the target dependency property.
+            </returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Utilities.CodedValueDomainConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Modifies the target data before passing it to the source object.  This method is called only in <see cref="F:System.Windows.Data.BindingMode.TwoWay"/> bindings.
+            </summary>
+            <param name="value">The target data being passed to the source.</param>
+            <param name="targetType">The <see cref="T:System.Type"/> of data expected by the source object.</param>
+            <param name="parameter">An optional parameter to be used in the converter logic.</param>
+            <param name="culture">The culture of the conversion.</param>
+            <returns>
+            The value to be passed to the source object.
+            </returns>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.Utilities.RangeDomainValidator">
+            <summary>
+            The RangeDomainValidator class.
+            </summary>
+            <remarks>Used by property setters of the fields having range domain information.</remarks>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Utilities.RangeDomainValidator.IsInValidRange(System.Nullable{System.Byte})">
+            <summary>
+            Determines whether the nullable byte value is in valid range.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Utilities.RangeDomainValidator.IsInValidRange(System.Byte)">
+            <summary>
+            Determines whether the byte value is in valid range.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Utilities.RangeDomainValidator.IsInValidRange(System.Nullable{System.Int16})">
+            <summary>
+            Determines whether the nullable short integer value is in valid range.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Utilities.RangeDomainValidator.IsInValidRange(System.Int16)">
+            <summary>
+            Determines whether the short integer value is in valid range.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Utilities.RangeDomainValidator.IsInValidRange(System.Nullable{System.Int32})">
+            <summary>
+            Determines whether the nullable integer value is in valid range.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Utilities.RangeDomainValidator.IsInValidRange(System.Int32)">
+            <summary>
+            Determines whether the integer value is in valid range.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Utilities.RangeDomainValidator.IsInValidRange(System.Nullable{System.Int64})">
+            <summary>
+            Determines whether the nullable long integer value is in valid range.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Utilities.RangeDomainValidator.IsInValidRange(System.Int64)">
+            <summary>
+            Determines whether the long integer value is in valid range.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Utilities.RangeDomainValidator.IsInValidRange(System.Nullable{System.Single})">
+            <summary>
+            Determines whether the nullable single value is in valid range.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Utilities.RangeDomainValidator.IsInValidRange(System.Single)">
+            <summary>
+            Determines whether the single value is in valid range.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Utilities.RangeDomainValidator.IsInValidRange(System.Nullable{System.Decimal})">
+            <summary>
+            Determines whether the nullable decimal value is in valid range.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Utilities.RangeDomainValidator.IsInValidRange(System.Decimal)">
+            <summary>
+            Determines whether the decimal value is in valid range.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Utilities.RangeDomainValidator.IsInValidRange(System.Nullable{System.Double})">
+            <summary>
+            Determines whether the nullable double value is in valid range.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Utilities.RangeDomainValidator.IsInValidRange(System.Double)">
+            <summary>
+            Determines whether the double value is in valid range.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Utilities.RangeDomainValidator.minValue">
+            <summary>
+            Gets or sets the min value of the range domain.
+            </summary>
+            <value>The min value.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Utilities.RangeDomainValidator.maxValue">
+            <summary>
+            Gets or sets the max valueof the range domain.
+            </summary>
+            <value>The max value.</value>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.Utilities.DateTimeConverter">
+            <summary>
+            The DateTimeConverter class
+            </summary>
+            <remarks>Used to show date data types with short date string format.</remarks>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Utilities.DateTimeConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Modifies the source data before passing it to the target for display in the UI.
+            </summary>
+            <param name="value">The source data being passed to the target.</param>
+            <param name="targetType">The <see cref="T:System.Type"/> of data expected by the target dependency property.</param>
+            <param name="parameter">An optional parameter to be used in the converter logic.</param>
+            <param name="culture">The culture of the conversion.</param>
+            <returns>
+            The value to be passed to the target dependency property.
+            </returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Utilities.DateTimeConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Modifies the target data before passing it to the source object.  This method is called only in <see cref="F:System.Windows.Data.BindingMode.TwoWay"/> bindings.
+            </summary>
+            <param name="value">The target data being passed to the source.</param>
+            <param name="targetType">The <see cref="T:System.Type"/> of data expected by the source object.</param>
+            <param name="parameter">An optional parameter to be used in the converter logic.</param>
+            <param name="culture">The culture of the conversion.</param>
+            <returns>
+            The value to be passed to the source object.
+            </returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Utilities.FieldDomainUtils.SetFieldInfo(ESRI.ArcGIS.Client.FeatureService.FeatureLayerInfo,System.Collections.Generic.Dictionary{System.String,System.Object[]}@,System.Collections.Generic.Dictionary{System.String,ESRI.ArcGIS.Client.Field}@)">
+            <summary>
+            Sets the field information in the feature layer.
+            </summary>
+            <param name="featureLayerInfo">The feature layer info.</param>
+            <param name="rangeDomainInfo">The range domain info.</param>
+            <param name="fieldProps">The properties associated with the field.</param>
+            <returns>Dictionary of field types keyed by their actual names. Also, populates range domain information and field properties if any.</returns>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.ToolbarItemCollection">
+            <summary>
+            An observable <seealso cref="T:System.Collections.ObjectModel.ObservableCollection`1"/> Collection of Toolbaritems
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.ToolbarItem">
+            <summary>
+            The item used to represent a toolbar component
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.ToolbarItem.TextProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.ToolbarItem.Text"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.ToolbarItem.ContentProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.ToolbarItem.Content"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.ToolbarItem.TagProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.ToolbarItem.Tag"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.ToolbarItem.Text">
+            <summary>
+            Gets or sets the text.
+            </summary>
+            <value>The text.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.ToolbarItem.Content">
+            <summary>
+            Gets or sets the content.
+            </summary>
+            <value>The content.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.ToolbarItem.Tag">
+            <summary>
+            Gets or sets the tag.
+            </summary>
+            <value>The tag.</value>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.Primitives.TickBar">
+            <summary>
+            TickBar control used for placing a specified amount of tick marks evenly spread out.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.TickBar.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.Primitives.TickBar"/> class.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.TickBar.ArrangeOverride(System.Windows.Size)">
+            <summary>
+            Provides the behavior for the Arrange pass of Silverlight layout.
+            Classes can override this method to define their own Arrange pass behavior.
+            </summary>
+            <param name="finalSize">The final area within the parent that this
+            object should use to arrange itself and its children.</param>
+            <returns>
+            The actual size used once the element is arranged.
+            </returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.TickBar.MeasureOverride(System.Windows.Size)">
+            <summary>
+            Provides the behavior for the Measure pass of Silverlight layout. 
+            Classes can override this method to define their own Measure pass behavior.
+            </summary>
+            <param name="availableSize">The available size that this object
+            can give to child objects. Infinity can be specified as a value
+            to indicate that the object will size to whatever content is available.</param>
+            <returns>
+            The size that this object determines it needs during layout,
+            based on its calculations of child object allotted sizes.
+            </returns>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Primitives.TickBar.TickMarkPositionsProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Primitives.TickBar.TickMarkPositions"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Primitives.TickBar.TickMarkTemplateProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Primitives.TickBar.TickMarkTemplate"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Primitives.TickBar.OrientationProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Primitives.TickBar.Orientation"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.TickBar.TickMarkPositions">
+            <summary>
+            Gets or sets the tick mark positions.
+            </summary>
+            <value>The tick mark positions.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.TickBar.TickMarkTemplate">
+            <summary>
+            Gets or sets the item template for each tick mark.
+            </summary>
+            <value>The item template.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.TickBar.Orientation">
+            <summary>
+            Gets or sets the orientation.
+            </summary>
+            <value>The orientation.</value>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.Primitives.TemplatePanel">
+            <summary>
+            Lays out templates in a grid whose one dimension is specified.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.TemplatePanel.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.TemplatePanel.#cctor">
+            <summary>
+            Static initialization for the <see cref="T:ESRI.ArcGIS.Client.Toolkit.Primitives.TemplatePanel"/> control.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Primitives.TemplatePanel.ItemTemplateProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Primitives.TemplatePanel.ItemTemplate"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Primitives.TemplatePanel.TemplatesProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Primitives.TemplatePanel.Templates"/> dependency property
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Primitives.TemplatePanel.StackDirectionProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Primitives.TemplatePanel.StackDirection"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Primitives.TemplatePanel.StackCountProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Primitives.TemplatePanel.StackCount"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.TemplatePanel.OnApplyTemplate">
+            <summary>
+            Overrides apply template
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.TemplatePanel.ItemTemplate">
+            <summary>
+            Gets or sets the data template for TemplatePanel
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.TemplatePanel.Templates">
+            <summary>
+            The templates to be displayed in the template panel.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.TemplatePanel.StackDirection">
+            <summary>
+            Gets or sets the StackDirection.
+            When <see cref="P:ESRI.ArcGIS.Client.Toolkit.Primitives.TemplatePanel.StackDirection"/> is Horizontal, the number of rows equals the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Primitives.TemplatePanel.StackCount"/>.  
+            When <see cref="P:ESRI.ArcGIS.Client.Toolkit.Primitives.TemplatePanel.StackDirection"/> is Vertical, the number of columns equals the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Primitives.TemplatePanel.StackCount"/>.
+            <see cref="P:ESRI.ArcGIS.Client.Toolkit.Primitives.TemplatePanel.StackCount"/> has to be 1 or more.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.TemplatePanel.StackCount">
+            <summary>
+            Gets or sets the number of stacks.
+            When <see cref="P:ESRI.ArcGIS.Client.Toolkit.Primitives.TemplatePanel.StackDirection"/> is Horizontal, the number of rows equals the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Primitives.TemplatePanel.StackCount"/>.  
+            When <see cref="P:ESRI.ArcGIS.Client.Toolkit.Primitives.TemplatePanel.StackDirection"/> is Vertical, the number of columns equals the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Primitives.TemplatePanel.StackCount"/>.
+            <see cref="P:ESRI.ArcGIS.Client.Toolkit.Primitives.TemplatePanel.StackCount"/> has to be 1 or more.
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.MapProgressBar">
+            <summary>
+            A Map ProgressBar control that automatically fades in and out when map loads tiles.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.MapProgressBar.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.MapProgressBar"/> class.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.MapProgressBar.#cctor">
+            <summary>
+            Static initialization for the <see cref="T:ESRI.ArcGIS.Client.Toolkit.MapProgressBar"/> control.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.MapProgressBar.OnApplyTemplate">
+            <summary>
+            When overridden in a derived class, is invoked whenever application
+            code or internal processes (such as a rebuilding layout pass) call
+            <see cref="M:System.Windows.Controls.Control.ApplyTemplate"/>.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.MapProgressBar.MapProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.MapProgressBar.Map"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.MapProgressBar.TextBrushProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.MapProgressBar.TextBrush"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.MapProgressBar.Map">
+            <summary>
+            Sets or gets the Map control associated with the <see cref="T:System.Windows.Controls.ProgressBar"/>.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.MapProgressBar.TextBrush">
+            <summary>
+            Gets or sets the text brush.
+            </summary>
+            <value>The text brush.</value>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.MapLayerItem">
+            <summary>
+            Internal class encapsulating a layer item representing a map layer.
+            This class manages the events coming from the layer and the legend refresh process.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.MapLayerItem.#ctor(ESRI.ArcGIS.Client.Layer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.MapLayerItem"/> class.
+            </summary>
+            <param name="layer">The layer.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.MapLayerItem.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.MapLayerItem"/> class. Only useful in Design.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.MapLayerItem.Refresh">
+            <summary>
+            Refreshes the legend from infos coming from the map layer.
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.EditorWidget">
+            <summary>
+            Editor widget.
+            </summary>
+            <seealso cref="F:ESRI.ArcGIS.Client.Toolkit.EditorWidget.TemplatePicker"/>
+            <seealso cref="T:ESRI.ArcGIS.Client.Editor"/>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.EditorWidget.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.EditorWidget"/> class.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.EditorWidget.#cctor">
+            <summary>
+            Static initialization for the <see cref="T:ESRI.ArcGIS.Client.Toolkit.EditorWidget"/> control.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.EditorWidget.OnApplyTemplate">
+            <summary>
+            When overridden in a derived class, is invoked whenever application code
+            or internal processes call <see cref="M:System.Windows.FrameworkElement.ApplyTemplate"/>.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.EditorWidget.AlwaysDisplayDefaultTemplatesProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.EditorWidget.AlwaysDisplayDefaultTemplates"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.EditorWidget.AutoSelectProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.EditorWidget.AutoSelect"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.EditorWidget.AutoCompleteProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.EditorWidget.AutoComplete"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.EditorWidget.ContinuousProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.EditorWidget.Continuous"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.EditorWidget.FreehandProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.EditorWidget.Freehand"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.EditorWidget.GeometryServiceUrlProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.EditorWidget.GeometryServiceUrl"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.EditorWidget.LayerIDsProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.EditorWidget.LayerIDs"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.EditorWidget.MapProperty">
+            /// <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.EditorWidget.Map"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.EditorWidget.ShowAttributesOnAddProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.EditorWidget.ShowAttributesOnAdd"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.EditorWidget.AlwaysDisplayDefaultTemplates">
+            <summary>
+            Gets or sets a value indicating whether default templates should 
+            always be displayed.
+            </summary>
+            <remarks>
+            Default templates are displayed when no other templates exist.
+            </remarks>
+            <value>
+            	<c>true</c> if [always display default templates]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.EditorWidget.AutoSelect">
+            <summary>
+            Gets or sets a value indicating whether selection is automatic 
+            for tools that require it.
+            </summary>
+            <remarks>
+            Tools that use auto selection: Cut, Reshape, Union, and AutoComplete Add
+            </remarks>
+            <value><c>true</c> if [auto select]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.EditorWidget.AutoComplete">
+            <summary>
+            Gets or sets a value indicating whether auto completion is enabled 
+            when adding polygons.
+            </summary>
+            <remarks>
+            When AutoComplete is enabled, a line is drawn instead of a polygon 
+            and the rest of the polygon is completed based on snapping to nearby features.
+            </remarks>
+            <value><c>true</c> if [auto complete]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.EditorWidget.Continuous">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:ESRI.ArcGIS.Client.Toolkit.EditorWidget"/> is continuous.
+            </summary>
+            <value><c>true</c> if continuous; otherwise, <c>false</c>.</value>
+            <remarks>
+            Tools contained in the EditorWidget like the TemplatePicker, EditVertices, Reshape, 
+            Cut, Selection, etc. will remain active until a different tool is selected.
+            </remarks>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.EditorWidget.Freehand">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:ESRI.ArcGIS.Client.Toolkit.EditorWidget"/> 
+            is using freehand draw mode when using Add, Reshape, Union and Cut.
+            </summary>
+            <value><c>true</c> if freehand; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.EditorWidget.GeometryServiceUrl">
+            <summary>
+            Gets or sets the geometry service URL.
+            </summary>
+            <value>The geometry service URL.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.EditorWidget.LayerIDs">
+            <summary>
+            Gets or sets the layer IDs of the layers for which templates are displayed.
+            </summary>
+            <remarks>
+            Specified in XAML and in Blend as a comma-delimited string: If a layer 
+            name contains a comma, please use &#44; instead of the comma.
+            If null/empty, templates from all feature layers are used. Order of 
+            the layer ids is respected in generating templates.
+            </remarks>
+            <value>The layer IDs.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.EditorWidget.Map">
+            <summary>
+            Gets or sets the map that the template picker is buddied to.
+            </summary>
+            <value>The map.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.EditorWidget.ShowAttributesOnAdd">
+            <summary>
+            Gets or sets a value indicating whether the attributes are shown
+            when a graphic is added to the feature layer
+            </summary>
+        </member>
+        <member name="E:ESRI.ArcGIS.Client.Toolkit.EditorWidget.EditCompleted">
+            <summary>
+            Occurs when an edit has completed.
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.AttachmentEditor">
+            <summary>
+            The AttachmentEditor control.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.AttachmentEditor.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.AttachmentEditor"/> class.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.AttachmentEditor.FeatureLayerProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.AttachmentEditor.FeatureLayer"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.AttachmentEditor.GraphicSourceProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.AttachmentEditor.GraphicSource"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.AttachmentEditor.ItemTemplateProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.AttachmentEditor.ItemTemplate"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.AttachmentEditor.OnApplyTemplate">
+            <summary>
+            When overridden in a derived class, is invoked whenever application code or internal processes 
+            (such as a rebuilding layout pass) call <see cref="M:System.Windows.Controls.Control.ApplyTemplate"/>. 
+            In simplest terms, this means the method is called just before a UI element displays in an application. 
+            For more information, see Remarks.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.AttachmentEditor.FeatureLayer">
+            <summary>
+            Gets or sets the feature layer.
+            </summary>
+            <value>The feature layer.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.AttachmentEditor.GraphicSource">
+            <summary>
+            Gets or sets the graphic source.
+            </summary>
+            <value>The graphic source.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.AttachmentEditor.ItemTemplate">
+            <summary>
+            Gets or sets the DataTemplate used for items in the AttachmentEditor control.
+            </summary>
+            <value>The item template.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.AttachmentEditor.Filter">
+            <summary>
+            Gets or sets a filter string that specifies the file types and descriptions
+            to display in the System.Windows.Controls.OpenFileDialog.
+            </summary>
+            <value>
+            A filter string that specifies the file types and descriptions to display in the OpenFileDialog.
+            The default is <see cref="F:System.String.Empty"/>.
+            </value>
+            <exception cref="T:System.ArgumentException">
+            The filter string does not contain at least one vertical bar (|).
+            </exception>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.AttachmentEditor.FilterIndex">
+            <summary>
+            Gets or sets the index of the selected item in the System.Windows.Controls.OpenFileDialog 
+            filter drop-down list.
+            </summary>
+            <value>
+            The index of the selected item in the System.Windows.Controls.OpenFileDialog 
+            filter drop-down list. The default is 1.
+            </value>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The filter index is less than 1.
+            </exception>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.AttachmentEditor.Multiselect">
+            <summary>
+            Gets or sets a value that indicates whether the System.Windows.Controls.OpenFileDialog 
+            allows users to select multiple files.
+            </summary>
+            <value>
+            <c>true</c> if multiple selections are allowed; otherwise, <c>false</c>. The default is 
+            </value>
+        </member>
+        <member name="E:ESRI.ArcGIS.Client.Toolkit.AttachmentEditor.UploadFailed">
+            <summary>
+            Occurs when uploading an attachment to the server failed.
+            </summary>
+        </member>
+        <member name="E:ESRI.ArcGIS.Client.Toolkit.AttachmentEditor.EndUpload">
+            <summary>
+            Occurs when uploading of an attachment to the server ends.
+            </summary>
+        </member>
+        <member name="E:ESRI.ArcGIS.Client.Toolkit.AttachmentEditor.BeginUpload">
+            <summary>
+            Occurs when uploading of an attachment begins.
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.AttachmentEditor.UploadFailedEventArgs">
+            <summary>
+            Event argument for the UploadFailed event.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.AttachmentEditor.UploadFailedEventArgs.Result">
+            <summary>
+            Gets the result of upload failure.
+            </summary>
+            <value>The result.</value>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.AttachmentEditor.BeginUploadEventArgs">
+            <summary>
+            Event argument for the BeginUpload event.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.AttachmentEditor.BeginUploadEventArgs.FileInfos">
+            <summary>
+            Gets information about the files being uploaded.
+            </summary>
+            <value>The file infos.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.AttachmentEditor.BeginUploadEventArgs.Cancel">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:ESRI.ArcGIS.Client.Toolkit.AttachmentEditor.BeginUploadEventArgs"/> should be cancelled.
+            </summary>
+            <value><c>true</c> if cancel; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.TimeSlider">
+            <summary>
+            Time Slider control
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.TimeSlider.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.TimeSlider"/> class.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.TimeSlider.#cctor">
+            <summary>
+            Static initialization for the <see cref="T:ESRI.ArcGIS.Client.Toolkit.TimeSlider"/> control.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.TimeSlider.OnApplyTemplate">
+            <summary>
+            When overridden in a derived class, is invoked whenever application
+            code or internal processes (such as a rebuilding layout pass) call
+            <see cref="M:System.Windows.Controls.Control.ApplyTemplate"/>.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.TimeSlider.OnLostFocus(System.Windows.RoutedEventArgs)">
+            <summary>
+            Called before the <see cref="E:System.Windows.UIElement.LostFocus"/> event occurs.
+            </summary>
+            <param name="e">The data for the event.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.TimeSlider.OnGotFocus(System.Windows.RoutedEventArgs)">
+            <summary>
+            Called before the <see cref="E:System.Windows.UIElement.GotFocus"/> event occurs.
+            </summary>
+            <param name="e">The data for the event.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.TimeSlider.OnMouseEnter(System.Windows.Input.MouseEventArgs)">
+            <summary>
+            Called before the <see cref="E:System.Windows.UIElement.MouseEnter"/> event occurs.
+            </summary>
+            <param name="e">The data for the event.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.TimeSlider.OnMouseLeave(System.Windows.Input.MouseEventArgs)">
+            <summary>
+            Called before the <see cref="E:System.Windows.UIElement.MouseLeave"/> event occurs.
+            </summary>
+            <param name="e">The data for the event.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.TimeSlider.OnMouseLeftButtonDown(System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Called before the <see cref="E:System.Windows.UIElement.MouseLeftButtonDown"/> event occurs.
+            </summary>
+            <param name="e">The data for the event.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.TimeSlider.OnKeyDown(System.Windows.Input.KeyEventArgs)">
+            <summary>
+            Called before the <see cref="E:System.Windows.UIElement.KeyDown"/> event occurs.
+            </summary>
+            <param name="e">The data for the event.</param>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.TimeSlider.MinimumValueProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.TimeSlider.MinimumValue"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.TimeSlider.MaximumValueProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.TimeSlider.MaximumValue"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.TimeSlider.ValueProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.TimeSlider.Value"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.TimeSlider.IntervalsProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.TimeSlider.Intervals"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.TimeSlider.PlaySpeedProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.TimeSlider.PlaySpeed"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.TimeSlider.TimeModeProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.TimeSlider.TimeMode"/> dependancy property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.TimeSlider.IsPlayingProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.TimeSlider.IsPlaying"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.TimeSlider.CreateTimeStopsByCount(ESRI.ArcGIS.Client.TimeExtent,System.Int32)">
+            <summary>
+            Creates the specified number of time stops evenly distributed in the time extent.
+            </summary>
+            <param name="extent">The time extent.</param>
+            <param name="count">Number of stops.</param>
+            <returns>IEnumerable of time stops.</returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.TimeSlider.CreateTimeStopsByTimeInterval(ESRI.ArcGIS.Client.TimeExtent,System.TimeSpan)">
+            <summary>
+            Creates time stops within an interval dispersed with by specified <see cref="T:System.TimeSpan"/>.
+            </summary>
+            <param name="extent">The time extent.</param>
+            <param name="interval">Interval between each time stop.</param>
+            <returns>IEnumerable of time stops.</returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.TimeSlider.Next">
+            <summary>
+            Jumps to the next position in the intervals.
+            </summary>
+            <returns><c>true</c> if succeeded, <c>false</c> if there are no <see cref="P:ESRI.ArcGIS.Client.Toolkit.TimeSlider.Intervals"/> 
+            or the <see cref="P:ESRI.ArcGIS.Client.Toolkit.TimeSlider.MaximumValue"/> was reached.</returns>
+            <see cref="P:ESRI.ArcGIS.Client.Toolkit.TimeSlider.Intervals"/>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.TimeSlider.Previous">
+            <summary>
+            Jumps to the previous position in the intervals.
+            </summary>
+            <returns><c>true</c> if succeeded, <c>false</c> if there are no <see cref="P:ESRI.ArcGIS.Client.Toolkit.TimeSlider.Intervals"/> 
+            or the <see cref="P:ESRI.ArcGIS.Client.Toolkit.TimeSlider.MinimumValue"/> was reached.</returns>
+            <see cref="P:ESRI.ArcGIS.Client.Toolkit.TimeSlider.Intervals"/>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.TimeSlider.LoopProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.TimeSlider.Loop"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.TimeSlider.MinimumValue">
+            <summary>
+            Gets or sets the minimum value.
+            </summary>
+            <value>The minimum value.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.TimeSlider.MaximumValue">
+            <summary>
+            Gets or sets the maximum value.
+            </summary>
+            <value>The maximum value.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.TimeSlider.Value">
+            <summary>
+            Gets or sets the value.
+            </summary>
+            <value>The value.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.TimeSlider.Intervals">
+            <summary>
+            Gets or sets the time intervals for the tickmarks.
+            </summary>
+            <value>The intervals.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.TimeSlider.PlaySpeed">
+            <summary>
+            Gets or sets the play speed.
+            </summary>
+            <value>The play speed.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.TimeSlider.TimeMode">
+            <summary>
+            Gets or sets the time mode. Determines how the time slider control 
+            will represent a time extent.
+            </summary>
+            <value>The time mode.</value>
+            <seealso cref="T:ESRI.ArcGIS.Client.Toolkit.TimeMode"/>
+            <seealso cref="T:ESRI.ArcGIS.Client.TimeExtent"/>
+        </member>
+        <member name="E:ESRI.ArcGIS.Client.Toolkit.TimeSlider.ValueChanged">
+            <summary>
+            Occurs when the selected time extent has changed.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.TimeSlider.IsPlaying">
+            <summary>
+            Gets or sets a value indicating whether this instance is playing through the <see cref="P:ESRI.ArcGIS.Client.Toolkit.TimeSlider.Intervals"/>.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is playing; otherwise, <c>false</c>.
+            </value>
+            <see cref="P:ESRI.ArcGIS.Client.Toolkit.TimeSlider.Intervals"/>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.TimeSlider.Loop">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:ESRI.ArcGIS.Client.Toolkit.TimeSlider"/> will restart when reached the end.
+            </summary>
+            <value><c>true</c> if loop; otherwise, <c>false</c>.</value>
+            <seealso cref="P:ESRI.ArcGIS.Client.Toolkit.TimeSlider.IsPlaying"/>
+            <see cref="P:ESRI.ArcGIS.Client.Toolkit.TimeSlider.Intervals"/>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.TimeSlider.ValueChangedEventArgs">
+            <summary>
+            <see cref="T:System.Windows.RoutedEventArgs"/> used when raising the <see cref="E:ESRI.ArcGIS.Client.Toolkit.TimeSlider.ValueChanged"/> event.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.TimeSlider.ValueChangedEventArgs.#ctor(ESRI.ArcGIS.Client.TimeExtent,ESRI.ArcGIS.Client.TimeExtent)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.TimeSlider.ValueChangedEventArgs"/> class.
+            </summary>
+            <param name="newValue">The new <see cref="T:ESRI.ArcGIS.Client.TimeExtent"/> value.</param>
+            <param name="oldValue">The old <see cref="T:ESRI.ArcGIS.Client.TimeExtent"/> value.</param>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.TimeSlider.ValueChangedEventArgs.NewValue">
+            <summary>
+            Gets the new <see cref="T:ESRI.ArcGIS.Client.TimeExtent"/> value.
+            </summary>
+            <value>The new value.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.TimeSlider.ValueChangedEventArgs.OldValue">
+            <summary>
+            Gets the old <see cref="T:ESRI.ArcGIS.Client.TimeExtent"/> value.
+            </summary>
+            <value>The old value.</value>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.TimeMode">
+            <summary>
+            TimeMode represents the way dates are measured over time for the 
+            <see cref="T:ESRI.ArcGIS.Client.Toolkit.TimeSlider"/> control.
+            </summary>
+            <seealso cref="T:ESRI.ArcGIS.Client.Toolkit.TimeSlider"/>
+            <seealso cref="P:ESRI.ArcGIS.Client.Toolkit.TimeSlider.TimeMode"/>
+            <seealso cref="T:ESRI.ArcGIS.Client.TimeExtent"/>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.TimeMode.CumulativeFromStart">
+            <summary>
+            CumulativeFromStart mode represents a fixed start date that does not change 
+            and a end date that can change.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.TimeMode.TimeExtent">
+            <summary>
+            TimeExtent mode represents a start date that can change and a end 
+            date that can also change.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.TimeMode.TimeInstant">
+            <summary>
+            TimeInstant mode represents a start date and end date that are always 
+            the same date.
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid">
+            <summary>
+            Feature DataGrid Control.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid"/> class.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.#cctor">
+            <summary>
+            Initializes the <see cref="T:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid"/> class.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.MapProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.Map"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.GraphicsLayerProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.GraphicsLayer"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.FilterSourceProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.FilterSource"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.OnApplyTemplate">
+            <summary>
+            Finds Template Children defined in the Generic.xaml and initializes related 
+            variables of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid"/> control.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.OnBeginningEdit(System.Windows.Controls.DataGridBeginningEditEventArgs)">
+            <summary>
+            Raises the <see cref="E:System.Windows.Controls.DataGrid.BeginningEdit"/> event.
+            </summary>
+            <param name="e">The event data.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.OnRowEditEnded(System.Windows.Controls.DataGridRowEditEndedEventArgs)">
+            <summary>
+            Raises the <see cref="E:System.Windows.Controls.DataGrid.RowEditEnded"/> event.
+            </summary>
+            <param name="e">The event data.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.OnSelectionChanged(System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Raises the <see cref="E:System.Windows.Controls.DataGrid.SelectionChanged"/> event.
+            </summary>
+            <param name="e">The event data.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.OnAutoGeneratingColumn(System.Windows.Controls.DataGridAutoGeneratingColumnEventArgs)">
+            <summary>
+            Raises the <see cref="E:System.Windows.Controls.DataGrid.AutoGeneratingColumn"/> event.
+            </summary>
+            <param name="e">The event data.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.OnPreparingCellForEdit(System.Windows.Controls.DataGridPreparingCellForEditEventArgs)">
+            <summary>
+            Raises the <see cref="E:System.Windows.Controls.DataGrid.PreparingCellForEdit"/> event.
+            </summary>
+            <param name="e">The event data.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.InitializeFeatureDataGrid">
+            <summary>
+            Initializes events,... for the <see cref="T:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid"/> and all the identified 
+            variables in its control template.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.ValidateCurrentRecordNumber">
+            <summary>
+            Validates current record number and sets an appropriate value based upon the accepted range.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.SelectCurrentRecord">
+            <summary>
+            Selects current record in the <see cref="T:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid"/>.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.MoveFirst">
+            <summary>
+            Moves to the first.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.MovePrevious">
+            <summary>
+            Moves to the previous.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.MoveNext">
+            <summary>
+            Moves to the next.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.MoveLast">
+            <summary>
+            Moves to the last.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.MoveFirstButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Handles the Click event of the MoveFirstButton control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.MovePreviousButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Handles the Click event of the MovePreviousButton control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.MoveNextButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Handles the Click event of the MoveNextButton control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.MoveLastButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Handles the Click event of the MoveLastButton control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.CurrentRecordNumberTextBox_KeyDown(System.Object,System.Windows.Input.KeyEventArgs)">
+            <summary>
+            Finds and selects the grid row in the index specified in the textbox.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.ClearSelection">
+            <summary>
+            Clears selection.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.SwitchSelection">
+            <summary>
+            Switches the current selection.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.SelectAllRows">
+            <summary>
+            Selects all rows and graphic features.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.ZoomToSelection">
+            <summary>
+            Calculates the MBR containing all selected graphics and changes the map extent 
+            to the calculated extent.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.DeleteSelectedRows">
+            <summary>
+            Deletes selected <see cref="T:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid"/> row(s) and removes 
+            related graphic(s) from <see cref="T:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid"/>'s grahics layer.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.OptionsButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Handles the Click event of the OptionsButton control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.PopupChild_MouseLeave(System.Object,System.Windows.Input.MouseEventArgs)">
+            <summary>
+            Handles the MouseLeave event of the PopupChild control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Input.MouseEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.ClearSelectionMenuButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Handles the Click event of the ClearSelectionMenuButton control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.SwitchSelectionMenuButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Handles the Click event of the SwitchSelectionMenuButton control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.SelectAllMenuButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Handles the Click event of the SelectAllMenuButton control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.ZoomToSelectionMenuButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Handles the Click event of the ZoomToSelectionMenuButton control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.DeleteSelectedRowsMenuButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Handles the Click event of the DeleteSelectedRowsMenuButton control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.SetCurrentRecordNumberTextBox">
+            <summary>
+            Sets the text in current record number text box.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.SetNumberOfRecordsTextBlock(System.Int32,System.Int32)">
+            <summary>
+            Sets the text in number of records text block.
+            </summary>
+            <param name="countSelected">number of selected records.</param>
+            <param name="countTotal">total number of records.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.SetRecordsCount">
+            <summary>
+            Sets the records count variable.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.ShowNumberOfRecords">
+            <summary>
+            Shows number of selected records and total number of records in the grid row.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.SetItemsSource(System.Collections.Generic.IEnumerable{ESRI.ArcGIS.Client.Graphic})">
+            <summary>
+            Sets the <see cref="T:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid"/>'s ItemsSource after converting the source parameter to 
+            the proper format.
+            </summary>
+            <param name="graphics">The graphics.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.GetCorrespondingGridRow(ESRI.ArcGIS.Client.Graphic)">
+            <summary>
+            Gets the corresponding row in <see cref="T:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid"/> for the graphic.
+            </summary>
+            <param name="graphic">The graphic.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.Graphic_PropertyChanged(System.Object,System.ComponentModel.PropertyChangedEventArgs)">
+            <summary>
+            Handles the PropertyChanged event of each Graphic element in the GraphicCollection 
+            of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid"/> class.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.PopulateItemsSource(ESRI.ArcGIS.Client.GraphicsLayer,System.EventHandler{System.EventArgs})">
+            <summary>
+            Populates associated GraphicsLayer's PropertyChanged event handler (if it's not a FeatureLayer) to update 
+            contents of the FeatureDataGrid when its Graphics collection changes. Also, checks whether the layer is a 
+            FeatureLayer and populates the internal LayerInfo and EndSaveEdits event handlers for editing purposes.
+            At the end sets the ItemsSource of FeatureDataGrid and resets its internal variables states and values, and
+            if it's called as a result of the Initialized event handler of GraphicsLayer unregisters the handler.
+            </summary>
+            <param name="graphicsLayer">The GraphicsLayer.</param>
+            <param name="handler">The Initialized event handler to be unregistered.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.Graphics_CollectionChanged(System.Object,System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+            <summary>
+            Will be fired whenever there were any changes in graphics collection 
+            of the GraphicsLayer to update <see cref="T:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid"/>'s ItemsSource.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.UpdateItemsSource(System.Object,System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+            <summary>
+            Updates contents of the ItemsSource when FeatureDataGrid's associated graphic collection changes.
+            </summary>
+            <param name="sender">Observable collection of Graphic.</param>
+            <param name="e">Collection changed event arguments.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.ScrollGridRowIntoView(System.Object)">
+            <summary>
+            Finds the row in the input parameter then scrolls the data gird vertically to 
+            make it visible to the user.
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.GetGraphicIndexInGraphicsCollection(ESRI.ArcGIS.Client.Graphic)">
+            <summary>
+            Finds and returns the given graphics in the graphics collection 
+            in the GraphicsLayer.
+            </summary>
+            <param name="graphic"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.SelectGraphics(System.Collections.IList,System.Boolean)">
+            <summary>
+            Selects/deselects related graphic objects in the GraphicsLayer 
+            when related grid rows have been selected/deselected by the user.
+            </summary>
+            <param name="rowsToLookup"></param>
+            <param name="shouldSelectGraphics"></param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.GetRowIndexInRowsCollection(System.Object)">
+            <summary>
+            Finds and returns index of the given row in the ItemsSource 
+            object of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid"/>.
+            </summary>
+            <param name="gridRow"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.SubmitChangesMenuButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Handles the Click event of the SubmitChangesMenuButton control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.RefreshRow(ESRI.ArcGIS.Client.Graphic)">
+            <summary>
+            Updates a data row corresponds to the given graphic object.
+            </summary>
+            <param name="graphic">The graphic.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.ScrollIntoView(ESRI.ArcGIS.Client.Graphic,System.Windows.Controls.DataGridColumn)">
+            <summary>
+            Scrolls the <see cref="T:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid"/> vertically to display the row
+            for the specified <see cref="T:ESRI.ArcGIS.Client.Graphic"/> and scrolls the <see cref="T:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid"/>
+            horizontally to display the specified column.
+            </summary>
+            <param name="graphic">The graphic.</param>
+            <param name="column">The column.</param>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.Map">
+            <summary>
+            Gets or sets the map containing the <see cref="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.GraphicsLayer"/>.
+            </summary>
+            <remarks>Used for adjusting the extent when requested by user.</remarks>
+            <value>The map.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.GraphicsLayer">
+            <summary>
+            The graphics layer bound to the <see cref="T:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid"/>.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.FilterSource">
+            <summary>
+            Collection of graphics in the associated layer that have been filtered by a spatial/attribute query. 
+            </summary>
+            <value>The filter source.</value>
+            <remarks>Is set then FeatureDataGrid will be popuated by this collection.</remarks>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.SelectedGraphics">
+            <summary>
+            Gets the selected graphics.
+            </summary>
+            <value>The selected graphics.</value>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.GraphicsSelectionList.#ctor(ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.GraphicsSelectionList"/> class.
+            </summary>
+            <param name="owner">The owner.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.GraphicsSelectionList.Add(ESRI.ArcGIS.Client.Graphic)">
+            <summary>
+            Adds the specified value.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>The position into which the new element was inserted.</returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.GraphicsSelectionList.Clear">
+            <summary>
+            Removes all items from the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </summary>
+            <exception cref="T:System.NotSupportedException">
+            The <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only.
+            </exception>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.GraphicsSelectionList.Contains(ESRI.ArcGIS.Client.Graphic)">
+            <summary>
+            Returns true if current selection includes the given graphic.
+            </summary>
+            <param name="value"></param>
+            <returns>
+            <c>true</c> if the <see cref="T:ESRI.ArcGIS.Client.Graphic"/> is found in the <see cref="T:System.Collections.IList"/>; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.GraphicsSelectionList.IndexOf(ESRI.ArcGIS.Client.Graphic)">
+            <summary>
+            Returns index of the graphic in current selected graphics
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.GraphicsSelectionList.Insert(System.Int32,ESRI.ArcGIS.Client.Graphic)">
+            <summary>
+            Inserts a graphic to the current selection at given index
+            </summary>
+            <param name="index"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.GraphicsSelectionList.Remove(ESRI.ArcGIS.Client.Graphic)">
+            <summary>
+            Removes a graphic from current selection
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.GraphicsSelectionList.RemoveAt(System.Int32)">
+            <summary>
+            Removes a graphic from current selection at the given index
+            </summary>
+            <param name="index"></param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.GraphicsSelectionList.GetEnumerator">
+            <summary>
+            Returns an IEnumerator from current selection
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.GraphicsSelectionList.System#Collections#Generic#IEnumerable{ESRI#ArcGIS#Client#Graphic}#GetEnumerator">
+            <summary>
+            Returns an IEnumerator from current selection
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.GraphicsSelectionList.CopyTo(System.Array,System.Int32)">
+            <summary>
+            Copies elements of SelectedItems to an array starting at the given index
+            </summary>
+            <param name="array"></param>
+            <param name="index"></param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.GraphicsSelectionList.System#Collections#Generic#ICollection{ESRI#ArcGIS#Client#Graphic}#Add(ESRI.ArcGIS.Client.Graphic)">
+            <summary>
+            Adds an item to the current selected graphics collection
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.GraphicsSelectionList.CopyTo(ESRI.ArcGIS.Client.Graphic[],System.Int32)">
+            <summary>
+            Copies the elements of the SelectedGraphics to an array 
+            starting at a particular index.
+            </summary>
+            <param name="array"></param>
+            <param name="arrayIndex"></param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.GraphicsSelectionList.System#Collections#Generic#ICollection{ESRI#ArcGIS#Client#Graphic}#Remove(ESRI.ArcGIS.Client.Graphic)">
+            <summary>
+            Removes the first occurrence of a specific graphic from the SelectedGraphics
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.GraphicsSelectionList.IsFixedSize">
+            <summary>
+            Gets whether the SelectedItems collection is fixed size
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.GraphicsSelectionList.IsReadOnly">
+            <summary>
+            Gets whether the SelectedItems collection is read only
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.GraphicsSelectionList.Item(System.Int32)">
+            <summary>
+            Gets or sets a graphic at the given index
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.GraphicsSelectionList.Count">
+            <summary>
+            Gets number of SelectedItems
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.GraphicsSelectionList.IsSynchronized">
+            <summary>
+            Gets a value indicating whether access to the SelectedItems is synchronized
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataGrid.GraphicsSelectionList.SyncRoot">
+            <summary>
+            Gets an object that can be used to synchronize access to the SelectedItems
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.InfoWindow">
+            <summary>
+            Creates an instance of the InfoWindow that positions itself on top of the map
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.InfoWindow.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.InfoWindow"/> class.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.InfoWindow.#cctor">
+            <summary>
+            Static initialization for the <see cref="T:ESRI.ArcGIS.Client.Toolkit.InfoWindow"/> control.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.InfoWindow.ArrangeOverride(System.Windows.Size)">
+            <summary>
+            Provides the behavior for the Arrange pass of Silverlight layout.
+            Classes can override this method to define their own Arrange pass 
+            behavior.
+            </summary>
+            <param name="finalSize">The final area within the parent that this
+            object should use to arrange itself and its children.</param>
+            <returns>
+            The actual size that is used after the element is arranged in layout.
+            </returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.InfoWindow.OnApplyTemplate">
+            <summary>
+            When overridden in a derived class, is invoked whenever application 
+            code or internal processes (such as a rebuilding layout pass) call 
+            <see cref="M:System.Windows.Controls.Control.ApplyTemplate"/>. In 
+            simplest terms, this means the method is called just before a UI 
+            element displays in an application. For more information, see Remarks.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.InfoWindow.IsOpenProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.InfoWindow.IsOpen"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.InfoWindow.MapProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.InfoWindow.Map"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.InfoWindow.AnchorProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.InfoWindow.Anchor"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.InfoWindow.CornerRadiusProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.InfoWindow.CornerRadius"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.InfoWindow.StrokeThicknessProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.InfoWindow.StrokeThickness"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.InfoWindow.IsOpen">
+            <summary>
+            Gets or sets a value indicating whether the InfoWindow is open.
+            </summary>
+            <value><c>true</c> if this instance is open; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.InfoWindow.Map">
+            <summary>
+            Gets or sets the map.
+            </summary>
+            <value>The map.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.InfoWindow.Anchor">
+            <summary>
+            Gets or sets the anchor point.
+            </summary>
+            <value>The anchor point.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.InfoWindow.CornerRadius">
+            <summary>
+            Gets or sets the corner radius.
+            </summary>
+            <value>The corner radius.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.InfoWindow.StrokeThickness">
+            <summary>
+            Gets or sets the stroke thickness.
+            </summary>
+            <value>The stroke thickness.</value>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.Toolbar">
+            <summary>
+            A Widget used to represent a Toolbar
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Toolbar.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.Toolbar"/> class.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Toolbar.#cctor">
+            <summary>
+            Static initialization for the <see cref="T:ESRI.ArcGIS.Client.Toolkit.Toolbar"/> control.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Toolbar.OnApplyTemplate">
+            <summary>
+            When overridden in a derived class, is invoked whenever application code or internal processes (such as a rebuilding layout pass) call <see cref="M:System.Windows.Controls.Control.ApplyTemplate"/>.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Toolbar.MaxItemHeightProperty">
+            <summary>
+            Identifies the MaxItemHeight dependency poperty
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Toolbar.MaxItemWidthProperty">
+            <summary>
+            Identifies the MaxItemWidth dependency property
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Toolbar.ItemsProperty">
+            <summary>
+            Identifies the Items dependency property
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Toolbar.ToolbarItemClickEffectProperty">
+            <summary>
+            Identifies the ToolbarItemClieckEffect dependency property
+            </summary>
+        </member>
+        <member name="E:ESRI.ArcGIS.Client.Toolkit.Toolbar.ToolbarIndexChanged">
+            <summary>
+            Occurs when [toolbar index changed].
+            </summary>
+        </member>
+        <member name="E:ESRI.ArcGIS.Client.Toolkit.Toolbar.ToolbarItemClicked">
+            <summary>
+            Occurs when [toolbar item clicked].
+            </summary>
+        </member>
+        <member name="E:ESRI.ArcGIS.Client.Toolkit.Toolbar.ToolbarItemMouseEnter">
+            <summary>
+            Occurs when [toolbar item mouse enter].
+            </summary>
+        </member>
+        <member name="E:ESRI.ArcGIS.Client.Toolkit.Toolbar.ToolbarItemMouseLeave">
+            <summary>
+            Occurs when [toolbar item mouse leave].
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Toolbar.MaxItemHeight">
+            <summary>
+            Gets or sets the maximum height of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.ToolbarItem"/> item.
+            </summary>
+            <value>The height of the max item.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Toolbar.MaxItemWidth">
+            <summary>
+            Gets or sets the maximum width of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.ToolbarItem"/>.
+            </summary>
+            <value>The width of the max item.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Toolbar.Items">
+            <summary>
+            Gets or sets the <see cref="T:ESRI.ArcGIS.Client.Toolkit.ToolbarItemCollection"/>.
+            </summary>
+            <value>The items.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Toolbar.ToolbarItemClickEffect">
+            <summary>
+            Gets or sets the toolbar item click effect.
+            </summary>
+            <value>The toolbar item click effect.</value>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.Toolbar.ClickEffect">
+            <summary>
+            An enumeration used to select the tpe of click effect
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Toolbar.ClickEffect.None">
+            <summary>
+            Specifify the None enumeration when no click effect is wanted
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Toolbar.ClickEffect.Bounce">
+            <summary>
+            Use this enumeration to specify a bounce click effect
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Properties.Resources.AttachmentEditor_UploadFailed">
+            <summary>
+              Looks up a localized string similar to Upload failed..
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Properties.Resources.FeatureDataForm_CommitButtonContent">
+            <summary>
+              Looks up a localized string similar to Apply.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Properties.Resources.FeatureDataForm_EditingInReadOnlyMode">
+            <summary>
+              Looks up a localized string similar to Cannot apply changes when FeatureDataForm is in Read-only mode..
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Properties.Resources.FeatureDataGrid_CollectionIsEmpty">
+            <summary>
+              Looks up a localized string similar to There is no item in the collection..
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Properties.Resources.FeatureDataGrid_IndexOutOfRange">
+            <summary>
+              Looks up a localized string similar to Index must be greater than or equal to 0 and less than {0}..
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Properties.Resources.FeatureDataGrid_RowUpdateFailed">
+            <summary>
+              Looks up a localized string similar to Unable to update the row at index {0}..
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Properties.Resources.FeatureDataGrid_SelectedAndTotalRows">
+            <summary>
+              Looks up a localized string similar to Records ({0} out of {1} Selected).
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Properties.Resources.Validation_InvalidRangeDomain">
+            <summary>
+              Looks up a localized string similar to Value must be between {0} and {1}..
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Properties.Resources.Validation_InvalidType">
+            <summary>
+              Looks up a localized string similar to Invalid type: &quot;{0}&quot; must be a valid {1} value..
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Properties.Resources.Validation_InvalidValue">
+            <summary>
+              Looks up a localized string similar to &quot;{0}&quot; is not a valid &quot;{1}&quot; value for &quot;{2}&quot;..
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Properties.Resources.Validation_ValueCannotBeNull">
+            <summary>
+              Looks up a localized string similar to &quot;{0}&quot; cannot be empty..
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.FeatureDataFormLabelPosition">
+            <summary>
+            The enumeration type indicating position of field labels in the FeatureDataForm.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.FeatureDataFormLabelPosition.Left">
+            <summary>
+            Positions field labels on left side of each field control.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.FeatureDataFormLabelPosition.Top">
+            <summary>
+            Positions field labels on top of each field control.
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.FeatureDataField`1">
+            <summary>
+            The FeatureDataField class. Used by FeatureDataForm to create values corresponding to each graphic attribute. Beside 
+            data validation since FeatureDataField implements INotifyPropertyChanged interface it will notify FeatureDataForm about 
+            any change in an attribute.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataField`1.#ctor(ESRI.ArcGIS.Client.Toolkit.FeatureDataForm,ESRI.ArcGIS.Client.Field,System.Type,`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.FeatureDataField`1"/> class.
+            </summary>
+            <param name="featureDataForm">The feature data form.</param>
+            <param name="field">The field.</param>
+            <param name="propertyType">Type of the property.</param>
+            <param name="propertyValue">The property value.</param>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataField`1.Key">
+            <summary>
+            Gets the key (the attribute name).
+            </summary>
+            <value>The key.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataField`1.Value">
+            <summary>
+            Gets or sets the attribute value.
+            </summary>
+            <value>The value.</value>
+        </member>
+        <member name="E:ESRI.ArcGIS.Client.Toolkit.FeatureDataField`1.PropertyChanged">
+            <summary>
+            Occurs when a property value changes.
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.Magnifier">
+            <summary>
+            Map Magnifying glass
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Magnifier.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.Magnifier"/> class.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Magnifier.Initialize(ESRI.ArcGIS.Client.Map)">
+            <summary>
+            Initializes using the specified map.
+            </summary>
+            <param name="map">The map.</param>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Magnifier.LayersProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Magnifier.Layers"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Magnifier.MapProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Magnifier.Map"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Magnifier.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Magnifier.Enabled">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:ESRI.ArcGIS.Client.Toolkit.Magnifier"/> is enabled.
+            </summary>
+            <value><c>true</c> if enabled; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Magnifier.Layers">
+            <summary>
+            Gets or sets the layers.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Magnifier.ZoomFactor">
+            <summary>
+            Gets or sets the zoom factor.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Magnifier.Map">
+            <summary>
+            Gets or sets the map that this magnifier should magnify on.
+            </summary>
+            <value>The map.</value>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.FeatureDataFieldValueConverter">
+            <summary>
+            Value converter for each field created by the FeatureDataForm that corresponds to a graphic attribute.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataFieldValueConverter.#ctor(ESRI.ArcGIS.Client.FeatureService.CodedValueDomain)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.FeatureDataFieldValueConverter"/> class.
+            </summary>
+            <param name="codedValueDomain">The coded value domain.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataFieldValueConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Modifies the source data before passing it to the target for display in the UI.
+            </summary>
+            <param name="value">The source data being passed to the target.</param>
+            <param name="targetType">The <see cref="T:System.Type"/> of data expected by the target dependency property.</param>
+            <param name="parameter">An optional parameter to be used in the converter logic.</param>
+            <param name="culture">The culture of the conversion.</param>
+            <returns>
+            The value to be passed to the target dependency property.
+            </returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataFieldValueConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Modifies the target data before passing it to the source object.  This method is called only in <see cref="F:System.Windows.Data.BindingMode.TwoWay"/> bindings.
+            </summary>
+            <param name="value">The target data being passed to the source.</param>
+            <param name="targetType">The <see cref="T:System.Type"/> of data expected by the source object.</param>
+            <param name="parameter">An optional parameter to be used in the converter logic.</param>
+            <param name="culture">The culture of the conversion.</param>
+            <returns>
+            The value to be passed to the source object.
+            </returns>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.Primitives.SymbolDisplay">
+            <summary>
+            A control that displays a symbol presenter scaled to fit.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.SymbolDisplay.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.SymbolDisplay.OnApplyTemplate">
+            <summary>
+            Overrides OnApplyTemplate
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.SymbolDisplay.MeasureOverride(System.Windows.Size)">
+            <summary>
+            Overrides MeasureOverride
+            </summary>
+            <param name="availableSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.SymbolDisplay.ArrangeOverride(System.Windows.Size)">
+            <summary>
+            Overrides ArrangeOverride
+            </summary>
+            <param name="finalSize"></param>
+            <returns></returns>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Primitives.SymbolDisplay.SymbolProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Primitives.SymbolDisplay.Symbol"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Primitives.SymbolDisplay.AttributesProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Primitives.SymbolDisplay.Attributes"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.SymbolDisplay.SymbolContent">
+            <summary>
+            The symbol presenter
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.SymbolDisplay.Symbol">
+            <summary>
+            The symbol to display
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.SymbolDisplay.Attributes">
+            <summary>
+            The attributes.  Required for data binding
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.Primitives.SymbolDisplay.DataBinder">
+            <summary>
+            The data binder.  Used for data binding.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.SymbolDisplay.DataBinder.Attributes">
+            <summary>
+            Attributes
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.SymbolDisplay.DataBinder.Symbol">
+            <summary>
+            Symbol
+            </summary>
+        </member>
+        <member name="E:ESRI.ArcGIS.Client.Toolkit.Primitives.SymbolDisplay.DataBinder.PropertyChanged">
+            <summary>
+            Property changed event.
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.Legend">
+            <summary>
+            Legend Control
+            </summary>
+            <example>
+            <para>
+            Allowing the user to toggle map service layers on and off and change
+            opacity by overriding the MapLayerTemplate:
+            <code lang="Xaml">
+            &lt;esri:Legend Map=&quot;{Binding ElementName=MyMap}&quot; LayerItemsMode=&quot;Flat&quot;
+            	 ShowOnlyVisibleLayers=&quot;False&quot;&gt;
+            	&lt;esri:Legend.MapLayerTemplate&gt;
+            		&lt;DataTemplate&gt;
+            		&lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
+            			&lt;CheckBox Content=&quot;{Binding Label}&quot;
+            							IsChecked=&quot;{Binding IsEnabled, Mode=TwoWay}&quot;
+            							IsEnabled=&quot;{Binding IsInScaleRange}&quot; &gt;
+            			&lt;/CheckBox&gt;
+            			&lt;Slider Maximum=&quot;1&quot; Value=&quot;{Binding Layer.Opacity, Mode=TwoWay}&quot; Width=&quot;50&quot; /&gt;
+            		&lt;/StackPanel&gt;
+            	&lt;/DataTemplate&gt;
+            	&lt;/esri:Legend.MapLayerTemplate&gt;
+            &lt;/esri:Legend&gt;
+            </code>
+            </para>
+            </example>
+            <example>
+            <para>
+            Allowing the user to toggle sub layers in a dynamic map service by 
+            overriding the LayerTemplate:
+            <code lang="Xaml">
+            &lt;esri:Legend Map=&quot;{Binding ElementName=MyMap}&quot; LayerItemsMode=&quot;Flat&quot;
+            	 ShowOnlyVisibleLayers=&quot;False&quot;&gt;
+            	&lt;esri:Legend.LayerTemplate&gt;
+            		&lt;DataTemplate&gt;
+            			&lt;CheckBox Content=&quot;{Binding Label}&quot;
+            			IsChecked=&quot;{Binding IsEnabled, Mode=TwoWay}&quot;
+            				IsEnabled=&quot;{Binding IsInScaleRange}&quot; &gt;
+            			&lt;/CheckBox&gt;
+            		&lt;/DataTemplate&gt;
+            	&lt;/esri:Legend.LayerTemplate&gt;
+            &lt;/esri:Legend&gt;
+            </code>
+            </para>
+            </example>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Legend.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.Legend"/> class.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Legend.#cctor">
+            <summary>
+            Static initialization for the <see cref="T:ESRI.ArcGIS.Client.Toolkit.Legend"/> control.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Legend.MapProperty">
+            /// <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Legend.Map"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Legend.LayerIDsProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Legend.LayerIDs"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Legend.LayerItemsModeProperty">
+            <summary>
+            Identifies the <see cref="F:ESRI.ArcGIS.Client.Toolkit.Legend.LayerItemsModeProperty"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Legend.ShowOnlyVisibleLayersProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Legend.ShowOnlyVisibleLayers"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Legend.LayerItemsProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Legend.LayerItems"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Legend.LayerItemsSourceProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Legend.LayerItemsSource"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Legend.LegendItemTemplateProperty">
+            /// <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Legend.LegendItemTemplate"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Legend.LayerTemplateProperty">
+            /// <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Legend.LayerTemplate"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Legend.MapLayerTemplateProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Legend.LegendItemTemplate"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Legend.Refresh">
+            <summary>
+            Refreshes the legend control.
+            </summary>
+            <remarks>Note : In most cases, the control is always up to date without calling the refresh method.</remarks>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Legend.OnApplyTemplate">
+            <summary>
+            When overridden in a derived class, is invoked whenever application code 
+            or internal processes (such as a rebuilding layout pass) call
+            <see cref="M:System.Windows.Controls.Control.ApplyTemplate"/>.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Legend.Map">
+            <summary>
+            Gets or sets the map that the legend control is buddied to.
+            </summary>
+            <value>The map.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Legend.LayerIDs">
+            <summary>
+            Gets or sets the layer IDs of the layers participating in the legend.
+            </summary>
+            <remarks>
+            Specified in XAML and in Blend as a comma-delimited string: If a layer 
+            name contains a comma, please use &#44; instead of the comma.
+            If null/empty, legend from all layers is generated. Order of 
+            the layer ids is respected in generating the legend.
+            </remarks>
+            <value>The layer IDs.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Legend.LayerItemsMode">
+            <summary>
+            Gets or sets the layer items mode that defines the structure of the legend : Flat or Tree.
+            Depending on this value, <see cref="P:ESRI.ArcGIS.Client.Toolkit.Legend.LayerItemsSource"/> and <see cref="P:ESRI.ArcGIS.Client.Toolkit.Primitives.LayerItemViewModel.LayerItemsSource"/> will return
+            either only the layer items leaves or a complete layer item hierarchy taking care of the map layers and of the group layers.
+            </summary>
+            <value>The layer items mode.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Legend.ShowOnlyVisibleLayers">
+            <summary>
+            Gets or sets a value indicating whether only the visible layers are participating to the legend.
+            </summary>
+            <value>
+            	<c>true</c> if only the visible layers are participating to the legend; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Legend.LayerItems">
+            <summary>
+            Gets the LayerItems for all layers that the legend control is working with.
+            </summary>
+            <value>The LayerItems.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Legend.LayerItemsSource">
+            <summary>
+            The enumeration of the legend items displayed at the first level of the legend control.
+            This enumeration is depending on the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Legend.LayerItemsMode"/> property and on the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Legend.ShowOnlyVisibleLayers"/> property.
+            </summary>
+            <value>The layer items source.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Legend.LegendItemTemplate">
+            <summary>
+            Gets or sets the legend item template.
+            </summary>
+            <remarks>The legend item template is used at the lower level in the legend hierachy.
+            Most generally, it contains an image and a label. </remarks>
+            <value>The legend item template.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Legend.LayerTemplate">
+            <summary>
+            Gets or sets the layer template. This template is used by default for all layer items (i.e all items except the legend items at the lowest level). 
+            </summary>
+            <value>The layer template.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Legend.MapLayerTemplate">
+            <summary>
+            Gets or sets the map layer template (i.e. the highest items in the legend hierarchy).
+            </summary>
+            <remarks>This value is optional. By default, the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Legend.LayerTemplate"/> is used.
+            </remarks>
+            <value>The map layer template.</value>
+        </member>
+        <member name="E:ESRI.ArcGIS.Client.Toolkit.Legend.Refreshed">
+            <summary>
+            Occurs when the legend is refreshed. 
+            Give the opportunity for an application to add or remove legend items.
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.Legend.Mode">
+            <summary>
+            LayerItems mode enumeration defines the structure of the legend : Flat or Tree.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Legend.Mode.Flat">
+            <summary>
+            Flat structure : LayerItemsSource returns the LayerItems leaves (i.e not the group layers nor the map layers with sub layers) and the LegendItems. 
+            <remarks>This is the default value.</remarks>
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Legend.Mode.Tree">
+            <summary>
+            Tree structure : LayerItemsSource returns a hierarchy of legend items taking care of the map layers and of the group layers. 
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.Legend.RefreshedEventArgs">
+            <summary>
+            Legend Event Arguments used when the legend is refreshed.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Legend.RefreshedEventArgs.LayerItem">
+            <summary>
+            Gets the layer item being refreshed.
+            </summary>
+            <value>The layer item.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Legend.RefreshedEventArgs.Error">
+            <summary>
+            Gets a value that indicates which error occurred during the legend refresh.
+            </summary>
+            <value>An System.Exception instance, if an error occurred during the refresh; otherwise null.</value>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.Primitives.SymbolPresenter">
+            <summary>
+            A control that displays a symbol.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.SymbolPresenter.MeasureOverride(System.Windows.Size)">
+            <summary>
+            Overrides MeasureOverride
+            </summary>
+            <param name="availableSize"></param>
+            <returns></returns>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.Primitives.SymbolPresenter.SymbolProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.Primitives.SymbolPresenter.Symbol"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.SymbolPresenter.OnMouseEnter(System.Windows.Input.MouseEventArgs)">
+            <summary>
+            Overrides OnMouseEnter
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.SymbolPresenter.OnMouseLeftButtonDown(System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Overrides OnMouseLeftButtonDown
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.SymbolPresenter.OnMouseLeftButtonUp(System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Overrides OnMouseLeftButtonUp
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.SymbolPresenter.OnMouseLeave(System.Windows.Input.MouseEventArgs)">
+            <summary>
+            Overrides OnMouseLeave
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.Primitives.SymbolPresenter.Symbol">
+            <summary>
+            The symbol to display.
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.Primitives.TreeViewExtended">
+            <summary>
+            Represents a control that displays hierarchical data in a tree structure
+            that has items that can expand and collapse.
+            This control inherits from the TreeView control
+            and adds a binding for the <see cref="P:System.Windows.Controls.TreeView.IsExpanded"/>
+            and <see cref="P:System.Windows.Controls.TreeView.IsSelected"/> properties
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.TreeViewExtended.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.Primitives.TreeViewExtended"/> class.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.TreeViewExtended.#cctor">
+            <summary>
+            Static initialization for the <see cref="T:ESRI.ArcGIS.Client.Toolkit.Primitives.TreeViewExtended"/> control.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.TreeViewExtended.GetContainerForItemOverride">
+            <summary>
+            Creates a <see cref="T:ESRI.ArcGIS.Client.Toolkit.Primitives.TreeViewItemExtended"/> to
+            display content.
+            </summary>
+            <returns>
+            A <see cref="T:ESRI.ArcGIS.Client.Toolkit.Primitives.TreeViewItemExtended"/> to use as a
+            container for content.
+            </returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.TreeViewExtended.IsItemItsOwnContainerOverride(System.Object)">
+            <summary>
+            Determines whether an object is a
+            <see cref="T:ESRI.ArcGIS.Client.Toolkit.Primitives.TreeViewItemExtended"/>.
+            </summary>
+            <param name="item">The object to evaluate.</param>
+            <returns>
+            True if <paramref name="item"/> is a
+            <see cref="T:ESRI.ArcGIS.Client.Toolkit.Primitives.TreeViewItemExtended"/>; otherwise,
+            false.
+            </returns>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.Primitives.TreeViewItemExtended">
+            <summary>
+            Provides an item for the <see cref="T:ESRI.ArcGIS.Client.Toolkit.Primitives.TreeViewExtended"/> control.
+            This control inherits from the TreeViewItem control
+            and adds a binding for the <see cref="P:System.Windows.Controls.TreeViewItem.IsExpanded"/>
+            and <see cref="P:System.Windows.Controls.TreeViewItem.IsSelected"/> properties
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.TreeViewItemExtended.GetContainerForItemOverride">
+            <summary>
+            Creates a <see cref="T:ESRI.ArcGIS.Client.Toolkit.Primitives.TreeViewItemExtended"/> to
+            display content.
+            </summary>
+            <returns>
+            A <see cref="T:ESRI.ArcGIS.Client.Toolkit.Primitives.TreeViewItemExtended"/> to use as a
+            container for content.
+            </returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.Primitives.TreeViewItemExtended.IsItemItsOwnContainerOverride(System.Object)">
+            <summary>
+            Determines whether an object is a
+            <see cref="T:ESRI.ArcGIS.Client.Toolkit.Primitives.TreeViewItemExtended"/>.
+            </summary>
+            <param name="item">The object to evaluate.</param>
+            <returns>
+            True if <paramref name="item"/> is a
+            <see cref="T:ESRI.ArcGIS.Client.Toolkit.Primitives.TreeViewItemExtended"/>; otherwise,
+            false.
+            </returns>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.MagnifyingGlass">
+            <summary>
+            Magnifying control for the <see cref="T:ESRI.ArcGIS.Client.Map"/> using a <see cref="T:ESRI.ArcGIS.Client.TiledMapServiceLayer"/>.
+            </summary>
+            <remarks>
+            If you require multiple layer or dynamic layers in your magnifier, 
+            use the <see cref="T:ESRI.ArcGIS.Client.Toolkit.Magnifier"/> control instead.
+            </remarks>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.MagnifyingGlass.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.MagnifyingGlass"/> class.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.MagnifyingGlass.#cctor">
+            <summary>
+            Static initialization for the <see cref="T:ESRI.ArcGIS.Client.Toolkit.MagnifyingGlass"/> control.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.MagnifyingGlass.ArrangeOverride(System.Windows.Size)">
+            <summary>
+            Provides the behavior for the "Arrange" pass of Silverlight layout.
+            Classes can override this method to define their own arrange pass behavior.
+            </summary>
+            <param name="finalSize">The final area within the parent that
+            this object should use to arrange itself and its children.</param>
+            <returns>The actual size used.</returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.MagnifyingGlass.OnApplyTemplate">
+            <summary>
+            When overridden in a derived class, is invoked whenever application
+            code or internal processes (such as a rebuilding layout pass) call
+            <see cref="M:System.Windows.Controls.Control.ApplyTemplate"/>.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.MagnifyingGlass.LayerProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.MagnifyingGlass.Layer"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.MagnifyingGlass.MapProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.MagnifyingGlass.Map"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.MagnifyingGlass.ZoomFactorProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.MagnifyingGlass.ZoomFactor"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.MagnifyingGlass.Layer">
+            <summary>
+            Gets or sets the layer used in the overview map.
+            </summary>
+            <value>The layer.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.MagnifyingGlass.Map">
+            <summary>
+            Sets or gets the Map control associated with the OverviewMap.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.MagnifyingGlass.ZoomFactor">
+            <summary>
+            Gets or sets the zoom factor.
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm">
+            <summary>
+            The FeatureDataForm Control. Provides the ability to view/modify graphic attributes in Graphics/Feature layers.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm"/> class.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.FeatureLayerProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.FeatureLayer"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.GraphicSourceProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.GraphicSource"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.IsReadOnlyProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.IsReadOnly"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.CommitButtonContentProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.CommitButtonContent"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.LabelPositionProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.LabelPosition"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.CommitButtonStyleProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.CommitButtonStyle"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.LabelStyleProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.LabelStyle"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.TextBoxStyleProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.TextBoxStyle"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.ComboBoxStyleProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.ComboBoxStyle"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.DatePickerStyleProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.DatePickerStyle"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.OnApplyTemplate">
+            <summary>
+            When overridden in a derived class, is invoked whenever application code or internal processes 
+            (such as a rebuilding layout pass) call <see cref="M:System.Windows.Controls.Control.ApplyTemplate"/>.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.ApplyChanges">
+            <summary>
+            Updates the GraphicSource by applying all changes that have been made and not applied to the associated graphic's attributes.
+            </summary>
+            <returns>true if the edits could be applied</returns>
+            <seealso cref="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.HasEdits"/>
+            <seealso cref="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.IsValid"/>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.IsValid">
+            <summary>
+            Gets a value indicating whether last update operation in this instance was valid.
+            </summary>
+            <value><c>true</c> if the last update operation was valid; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.HasEdits">
+            <summary>
+            Gets a value indicating whether the instance of the FeatureDataForm has unapplied edit(s).
+            </summary>
+            <value><c>true</c> if the instance of the FeatureDataForm has unapplied edit(s); otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.FeatureLayer">
+            <summary>
+            Gets or sets the feature layer.
+            </summary>
+            <value>The feature layer.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.GraphicSource">
+            <summary>
+            Gets or sets the GraphicSource. This is the data source used by the FeatureDataForm.
+            </summary>
+            <value>The graphic source.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.IsReadOnly">
+            <summary>
+            Gets or sets a value indicating whether this instance is read only.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is read only; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.CommitButtonContent">
+            <summary>
+            Gets or sets the content of the commit button.
+            </summary>
+            <value>The content of the commit button.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.LabelPosition">
+            <summary>
+            Gets or sets the label positioning in FeatureDataForm.
+            </summary>
+            <value>The label position: Left or Top</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.CommitButtonStyle">
+            <summary>
+            Gets or sets the style used for the commit button.
+            </summary>
+            <value>The commit button style.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.LabelStyle">
+            <summary>
+            Gets or sets the style used for all TextBlock controls showing field names/aliases.
+            </summary>
+            <value>The label style.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.TextBoxStyle">
+            <summary>
+            Gets or sets the style used for all TextBox controls showing field values.
+            </summary>
+            <value>The text box style.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.ComboBoxStyle">
+            <summary>
+            Gets or sets the style used for all ComboBox controls showing field values.
+            </summary>
+            <value>The combo box style.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.DatePickerStyle">
+            <summary>
+            Gets or sets the style used for all DatePicker (calendar) controls showing field values.
+            </summary>
+            <value>The date picker style.</value>
+        </member>
+        <member name="E:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.EditEnded">
+            <summary>
+            Occurs when the last update was successfully finished in FeatureDataForm.
+            </summary>
+        </member>
+        <member name="E:ESRI.ArcGIS.Client.Toolkit.FeatureDataForm.PropertyChanged">
+            <summary>
+            Occurs when a property value changes.
+            </summary>
+        </member>
+    </members>
+</doc>

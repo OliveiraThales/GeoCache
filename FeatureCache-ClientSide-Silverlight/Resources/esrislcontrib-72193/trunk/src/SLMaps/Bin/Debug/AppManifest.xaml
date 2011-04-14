@@ -1,0 +1,20 @@
+﻿<Deployment xmlns="http://schemas.microsoft.com/client/2007/deployment" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" EntryPointAssembly="SLMaps" EntryPointType="SLMaps.App" RuntimeVersion="4.0.50826.0">
+  <Deployment.Parts>
+    <AssemblyPart x:Name="SLMaps" Source="SLMaps.dll" />
+    <AssemblyPart x:Name="ESRI.ArcGIS.Client.Behaviors" Source="ESRI.ArcGIS.Client.Behaviors.dll" />
+    <AssemblyPart x:Name="ESRI.ArcGIS.Client.Bing" Source="ESRI.ArcGIS.Client.Bing.dll" />
+    <AssemblyPart x:Name="ESRI.ArcGIS.Client" Source="ESRI.ArcGIS.Client.dll" />
+    <AssemblyPart x:Name="ESRI.ArcGIS.Client.Toolkit" Source="ESRI.ArcGIS.Client.Toolkit.dll" />
+    <AssemblyPart x:Name="System.CoreEx" Source="System.CoreEx.dll" />
+    <AssemblyPart x:Name="System.Json" Source="System.Json.dll" />
+    <AssemblyPart x:Name="System.Observable" Source="System.Observable.dll" />
+    <AssemblyPart x:Name="System.Reactive" Source="System.Reactive.dll" />
+    <AssemblyPart x:Name="System.Windows.Controls.Data" Source="System.Windows.Controls.Data.dll" />
+    <AssemblyPart x:Name="System.Windows.Controls" Source="System.Windows.Controls.dll" />
+    <AssemblyPart x:Name="Vishcious.ArcGIS.SLContrib" Source="Vishcious.ArcGIS.SLContrib.dll" />
+    <AssemblyPart x:Name="System.Xml.Linq" Source="System.Xml.Linq.dll" />
+    <AssemblyPart x:Name="System.ComponentModel.DataAnnotations" Source="System.ComponentModel.DataAnnotations.dll" />
+    <AssemblyPart x:Name="System.Windows.Controls.Data.Input" Source="System.Windows.Controls.Data.Input.dll" />
+    <AssemblyPart x:Name="System.Windows.Data" Source="System.Windows.Data.dll" />
+  </Deployment.Parts>
+</Deployment>

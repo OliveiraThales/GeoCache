@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLMaps", "src\SLMaps\SLMaps.csproj", "{5F731459-A310-4239-8698-FA49D3A41FFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vishcious.ArcGIS.SLContrib", "src\Vishcious.ArcGIS.SLContrib\Vishcious.ArcGIS.SLContrib.csproj", "{D2C4E3AC-4F45-42B7-96BE-EEA8912F55F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLMaps.Web", "src\SLMaps.Web\SLMaps.Web.csproj", "{BDC80D5F-F084-4CEC-8D98-86F634627A86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureService", "..\..\..\Modules\FeatureService\FeatureService\FeatureService.csproj", "{9034F2BD-EA21-422F-BD38-04591734A981}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "CacheProxy", "..\..\..\Modules\CacheProxy\", "{D4A7D921-B587-46E4-BBC8-F908DB08BF82}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/CacheProxy"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\..\Modules\CacheProxy\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\CacheProxy\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/CacheProxy"
+		Release.AspNetCompiler.PhysicalPath = "..\..\..\Modules\CacheProxy\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\CacheProxy\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "61599"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5F731459-A310-4239-8698-FA49D3A41FFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F731459-A310-4239-8698-FA49D3A41FFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F731459-A310-4239-8698-FA49D3A41FFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F731459-A310-4239-8698-FA49D3A41FFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2C4E3AC-4F45-42B7-96BE-EEA8912F55F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2C4E3AC-4F45-42B7-96BE-EEA8912F55F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2C4E3AC-4F45-42B7-96BE-EEA8912F55F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2C4E3AC-4F45-42B7-96BE-EEA8912F55F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDC80D5F-F084-4CEC-8D98-86F634627A86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDC80D5F-F084-4CEC-8D98-86F634627A86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDC80D5F-F084-4CEC-8D98-86F634627A86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDC80D5F-F084-4CEC-8D98-86F634627A86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9034F2BD-EA21-422F-BD38-04591734A981}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9034F2BD-EA21-422F-BD38-04591734A981}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9034F2BD-EA21-422F-BD38-04591734A981}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9034F2BD-EA21-422F-BD38-04591734A981}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4A7D921-B587-46E4-BBC8-F908DB08BF82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4A7D921-B587-46E4-BBC8-F908DB08BF82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4A7D921-B587-46E4-BBC8-F908DB08BF82}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4A7D921-B587-46E4-BBC8-F908DB08BF82}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

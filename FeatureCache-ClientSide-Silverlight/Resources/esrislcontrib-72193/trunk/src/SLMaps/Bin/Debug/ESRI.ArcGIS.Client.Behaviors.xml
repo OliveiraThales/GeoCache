@@ -1,0 +1,693 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ESRI.ArcGIS.Client.Behaviors</name>
+    </assembly>
+    <members>
+        <member name="T:ESRI.ArcGIS.Client.Actions.ZoomToLayerAction">
+            <summary>
+            When triggered zooms to the full extent of a layer in the target map.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Actions.ZoomToLayerAction.Invoke(System.Object)">
+            <summary>
+            Invokes the action.
+            </summary>
+            <param name="parameter">The parameter to the action. If the Action does not require a parameter, the parameter may be set to a null reference.</param>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.ZoomToLayerAction.LayerIDProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Actions.ZoomToLayerAction.LayerID"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Actions.ZoomToLayerAction.LayerID">
+            <summary>
+            Gets or sets the ID of layer to zoom to.
+            </summary>
+            <value>The layer ID.</value>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Actions.PanToAction">
+            <summary>
+            When triggered pans to a geometry.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Actions.PanToAction.Invoke(System.Object)">
+            <summary>
+            Invokes the action.
+            </summary>
+            <param name="parameter">The parameter to the action. If the Action does not require a parameter, the parameter may be set to a null reference.</param>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.PanToAction.GeometryProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Actions.PanToAction.Geometry"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Actions.PanToAction.Geometry">
+            <summary>
+            Gets or sets the geometry to pan to.
+            </summary>
+            <value>The geometry.</value>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Actions.ClearGraphicsAction">
+            <summary>
+            When triggered clears the graphics in a <see cref="T:ESRI.ArcGIS.Client.GraphicsLayer"/>
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Actions.ClearGraphicsAction.Invoke(System.Object)">
+            <summary>
+            Invokes the action.
+            </summary>
+            <param name="parameter">
+            The parameter to the action. If the Action
+            does not require a parameter, the parameter may be set to a
+            null reference.
+            </param>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.ClearGraphicsAction.GraphicsLayerIDProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Actions.ClearGraphicsAction.GraphicsLayerID"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Actions.ClearGraphicsAction.GraphicsLayerID">
+            <summary>
+            Gets or sets the graphics layer ID.
+            </summary>
+            <value>The graphics layer ID.</value>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Behaviors.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Behaviors.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Behaviors.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Behaviors.MaintainExtentBehavior">
+            <summary>
+            Maintain Extent behavior maintains the extent of the map when it is resized.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Behaviors.MaintainExtentBehavior.OnAttached">
+            <summary>
+            Called after the behavior is attached to an AssociatedObject.
+            </summary>
+            <remarks>Override this to hook up functionality to the AssociatedObject.</remarks>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Behaviors.MaintainExtentBehavior.OnDetaching">
+            <summary>
+            Called when the behavior is being detached from its AssociatedObject, but before it has actually occurred.
+            </summary>
+            <remarks>Override this to unhook functionality from the AssociatedObject.</remarks>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Actions.RedlineAction">
+            <summary>
+            When triggered allows the user to draw a graphic on the map and add it to a graphics layer.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Actions.RedlineAction.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Actions.RedlineAction"/> class.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Actions.RedlineAction.Invoke(System.Object)">
+            <summary>
+            Invokes the action.
+            </summary>
+            <param name="parameter">
+            The parameter to the action. If the Action
+            does not require a parameter, the parameter may be set to a
+            null reference.
+            </param>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.RedlineAction.GraphicsLayerIDProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Actions.RedlineAction.GraphicsLayerID"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.RedlineAction.DrawModeProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Actions.RedlineAction.DrawMode"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.RedlineAction.ColorProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Actions.RedlineAction.Color"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Actions.RedlineAction.GraphicsLayerID">
+            <summary>
+            Gets or sets the graphics layer ID.
+            </summary>
+            <value>The graphics layer ID.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Actions.RedlineAction.DrawMode">
+            <summary>
+            Gets or sets the draw mode.
+            </summary>
+            <value>The draw mode.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Actions.RedlineAction.Color">
+            <summary>
+            Gets or sets the color to use for drawing.
+            </summary>
+            <value>The draw color.</value>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Behaviors.ConstrainExtentBehavior">
+            <summary>
+            Constrain Extent behavior. Limits the extent a user can pan or zoom to.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Behaviors.ConstrainExtentBehavior.ConstrainedExtentProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Behaviors.ConstrainExtentBehavior.ConstrainedExtent"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Behaviors.ConstrainExtentBehavior.OnAttached">
+            <summary>
+            Called after the behavior is attached to an AssociatedObject.
+            </summary>
+            <remarks>Override this to hook up functionality to the AssociatedObject.</remarks>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Behaviors.ConstrainExtentBehavior.OnDetaching">
+            <summary>
+            Called when the behavior is being detached from its AssociatedObject, but before it has actually occurred.
+            </summary>
+            <remarks>Override this to unhook functionality from the AssociatedObject.</remarks>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Behaviors.ConstrainExtentBehavior.ConstrainedExtent">
+            <summary>
+            Gets or sets the constrained extent.
+            </summary>
+            <value>The constrained extent.</value>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Actions.UpdateFeatureLayerAction">
+            <summary>
+            When triggered, forces an update of the feature layer contents from the service.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Actions.UpdateFeatureLayerAction.Invoke(System.Object)">
+            <summary>
+            Invokes the action.
+            </summary>
+            <param name="parameter">
+            The parameter to the action. If the Action
+            does not require a parameter, the parameter may be set to a
+            null reference.
+            </param>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.UpdateFeatureLayerAction.FeatureLayerIDProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Actions.UpdateFeatureLayerAction.FeatureLayerID"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Actions.UpdateFeatureLayerAction.FeatureLayerID">
+            <summary>
+            Gets or sets the feature layer ID.
+            </summary>
+            <value>The feature layer ID.</value>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Actions.ZoomToAction">
+            <summary>
+            When triggered zooms to a geometry. If the geometrys extent is a point, the map will pan to the geometry instead.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Actions.ZoomToAction.Invoke(System.Object)">
+            <summary>
+            Invokes the action.
+            </summary>
+            <param name="parameter">The parameter to the action. If the Action does not require a parameter, the parameter may be set to a null reference.</param>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.ZoomToAction.GeometryProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Actions.ZoomToAction.Geometry"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Actions.ZoomToAction.Geometry">
+            <summary>
+            Gets or sets the geometry to zoom to.
+            </summary>
+            <value>The geometry.</value>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Actions.SpatialQueryAction">
+            <summary>
+            Performs a spatial query against a feature service and adds the result to a graphics layer.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Actions.SpatialQueryAction.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Actions.SpatialQueryAction"/> class.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Actions.SpatialQueryAction.OnTargetChanged(ESRI.ArcGIS.Client.Map,ESRI.ArcGIS.Client.Map)">
+            <summary>
+            Called when the target property changes.
+            </summary>
+            <param name="oldTarget">The old target.</param>
+            <param name="newTarget">The new target.</param>
+            <remarks>Override this to hook and unhook functionality on the specified Target, rather than the AssociatedObject.</remarks>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Actions.SpatialQueryAction.Invoke(System.Object)">
+            <summary>
+            Invokes the action.
+            </summary>
+            <param name="parameter">The parameter to the action.
+            If the Action does not require a parameter, the parameter
+            may be set to a null reference.</param>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.SpatialQueryAction.WhereProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Actions.SpatialQueryAction.Where"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.SpatialQueryAction.UrlProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Actions.SpatialQueryAction.Url"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.SpatialQueryAction.LayerIDProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Actions.SpatialQueryAction.LayerID"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.SpatialQueryAction.SymbolProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Actions.SpatialQueryAction.Symbol"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.SpatialQueryAction.DrawModeProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Actions.SpatialQueryAction.DrawMode"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.SpatialQueryAction.OutFieldsProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Actions.SpatialQueryAction.OutFields"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Actions.SpatialQueryAction.Where">
+            <summary>
+            Gets or sets the where clause filter.
+            </summary>
+            <value>The where.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Actions.SpatialQueryAction.Url">
+            <summary>
+            Gets or sets the URL for the feature service to query.
+            </summary>
+            <value>The URL.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Actions.SpatialQueryAction.LayerID">
+            <summary>
+            Gets or sets the ID of the <see cref="T:ESRI.ArcGIS.Client.GraphicsLayer"/> to insert the result into.
+            </summary>
+            <value>The layer ID of the <see cref="T:ESRI.ArcGIS.Client.GraphicsLayer"/>.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Actions.SpatialQueryAction.Symbol">
+            <summary>
+            Gets or sets the symbol used for displaying the results.
+            </summary>
+            <value>The symbol.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Actions.SpatialQueryAction.DrawMode">
+            <summary>
+            Gets or sets the draw mode.
+            </summary>
+            <value>The draw mode.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Actions.SpatialQueryAction.OutFields">
+            <summary>
+            Gets or sets the out fields to query.
+            </summary>
+            <value>The out fields.</value>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Actions.MeasureAction">
+            <summary>
+            When triggered allows the user to measure distance, area and radius on the map.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Actions.MeasureAction.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Actions.MeasureAction"/> class.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Actions.MeasureAction.OnTargetChanged(ESRI.ArcGIS.Client.Map,ESRI.ArcGIS.Client.Map)">
+            <summary>
+            Called when the target property changes.
+            </summary>
+            <param name="oldTarget">The old target.</param>
+            <param name="newTarget">The new target.</param>
+            <remarks>Override this to hook and unhook functionality on the specified Target, rather than the AssociatedObject.</remarks>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Actions.MeasureAction.Invoke(System.Object)">
+            <summary>
+            Invokes the action.
+            </summary>
+            <param name="parameter">The parameter to the action. If the Action does not require a parameter, the parameter may be set to a null reference.</param>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.MeasureAction.MeasureModeProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Actions.MeasureAction.MeasureMode"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.MeasureAction.AreaUnitsProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Actions.MeasureAction.AreaUnit"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.MeasureAction.DistanceUnitProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Actions.MeasureAction.DistanceUnit"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.MeasureAction.MapUnitsProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Actions.MeasureAction.MapUnits"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.MeasureAction.FillSymbolProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Actions.MeasureAction.FillSymbol"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.MeasureAction.LineSymbolProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Actions.MeasureAction.LineSymbol"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.MeasureAction.DisplayTotalsProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Actions.MeasureAction.DisplayTotals"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Actions.MeasureAction.MeasureMode">
+            <summary>
+            Gets or sets the measure mode.
+            </summary>
+            <value>The measure mode.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Actions.MeasureAction.AreaUnit">
+            <summary>
+            Gets or sets the display area unit used for polygon measurement.
+            </summary>
+            <value>The area units.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Actions.MeasureAction.DistanceUnit">
+            <summary>
+            Gets or sets the distance unit used for polyline and radius measurement.
+            </summary>
+            <value>The distance units.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Actions.MeasureAction.MapUnits">
+            <summary>
+            Gets or sets the units of the map.
+            </summary>
+            <value>The map units.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Actions.MeasureAction.FillSymbol">
+            <summary>
+            Gets or sets the fill symbol used for area and radius measurement.
+            </summary>
+            <value>The fill symbol.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Actions.MeasureAction.LineSymbol">
+            <summary>
+            Gets or sets the line symbol used for polyline measurement.
+            </summary>
+            <value>The line symbol.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Actions.MeasureAction.DisplayTotals">
+            <summary>
+            Gets or sets a value indicating whether the total area and distance should be display.
+            </summary>
+            <remarks>This property does not apply to radius measurement.</remarks>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Actions.MeasureAction.Mode">
+            <summary>
+            Measure Action Mode
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.MeasureAction.Mode.Polyline">
+            <summary>
+            Polyline measure
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.MeasureAction.Mode.Polygon">
+            <summary>
+            Polygon measure
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.MeasureAction.Mode.Radius">
+            <summary>
+            Radius distance measure
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Actions.AreaUnit">
+            <summary>
+            Area units used by the MeasureAction
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.AreaUnit.Undefined">
+            <summary>Undefined/Unknown</summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.AreaUnit.SquareMiles">
+            <summary>Square miles</summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.AreaUnit.Acres">
+            <summary>Acres</summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.AreaUnit.SquareKilometers">
+            <summary>Square Kilometers</summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.AreaUnit.SquareFeet">
+            <summary>Square Feet</summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.AreaUnit.SquareMeters">
+            <summary>Square Meters</summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.AreaUnit.Hectares">
+            <summary>Hectares</summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Actions.DistanceUnit">
+            <summary>
+            Distance units used by the MeasureAction
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.DistanceUnit.Undefined">
+            <summary>Undefined/Unknown</summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.DistanceUnit.DecimalDegrees">
+            <summary>Decimal degrees</summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.DistanceUnit.Miles">
+            <summary>Miles</summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.DistanceUnit.Kilometers">
+            <summary>Kilometers</summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.DistanceUnit.Feet">
+            <summary>Feet</summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.DistanceUnit.Meters">
+            <summary>Meters</summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.DistanceUnit.Yards">
+            <summary>Yards</summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.DistanceUnit.NauticalMiles">
+            <summary>Nautical miles</summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Behaviors.ShowCoordinatesBehavior">
+            <summary>
+            Shows the map coordinates next to the mouse cursor
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Behaviors.ShowCoordinatesBehavior.FormatStringProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Behaviors.ShowCoordinatesBehavior.FormatString"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Behaviors.ShowCoordinatesBehavior.OnAttached">
+            <summary>
+            Called after the behavior is attached to an AssociatedObject.
+            </summary>
+            <remarks>Override this to hook up functionality to the AssociatedObject.</remarks>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Behaviors.ShowCoordinatesBehavior.OnDetaching">
+            <summary>
+            Called when the behavior is being detached from its AssociatedObject, but before it has actually occurred.
+            </summary>
+            <remarks>Override this to unhook functionality from the AssociatedObject.</remarks>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Behaviors.ShowCoordinatesBehavior.FormatString">
+            <summary>
+            Gets or sets the format string for the coordinate display.
+            </summary>
+            <value>The format string.</value>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Behaviors.Utilities.Geodesic">
+            <summary>
+            Extension methods for geodesic calculations.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Behaviors.Utilities.Geodesic.GetSphericalDistance(ESRI.ArcGIS.Client.Geometry.MapPoint,ESRI.ArcGIS.Client.Geometry.MapPoint)">
+            <summary>
+            Gets the distance between two points in Kilometers.
+            </summary>
+            <param name="start">The start point.</param>
+            <param name="end">The end point.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Behaviors.Utilities.Geodesic.GetRadiusAsPolygon(ESRI.ArcGIS.Client.Geometry.MapPoint,System.Double)">
+            <summary>
+            Returns a polygon with a constant distance from the center point measured on the sphere.
+            </summary>
+            <param name="center">The center.</param>
+            <param name="distM">Radius in meters.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Behaviors.Utilities.Geodesic.GetRadius(ESRI.ArcGIS.Client.Geometry.MapPoint,System.Double)">
+            <summary>
+            Returns a polyline with a constant distance from the center point measured on the sphere.
+            </summary>
+            <param name="center">The center.</param>
+            <param name="distM">Radius in meters.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Behaviors.Utilities.Geodesic.GetGeodesicLine(ESRI.ArcGIS.Client.Geometry.MapPoint,ESRI.ArcGIS.Client.Geometry.MapPoint)">
+            <summary>
+            Gets the shortest path line between two points. THe line will be following the great
+            circle described by the two points.
+            </summary>
+            <param name="start">The start point.</param>
+            <param name="end">The end point.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Behaviors.Utilities.Geodesic.LatitudeAtLongitude(ESRI.ArcGIS.Client.Geometry.MapPoint,ESRI.ArcGIS.Client.Geometry.MapPoint,System.Double)">
+            <summary>
+            Gets the latitude at a specific longitude for a great circle defined by p1 and p2.
+            </summary>
+            <param name="p1">The p1.</param>
+            <param name="p2">The p2.</param>
+            <param name="lon">The longitude in degrees.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Behaviors.Utilities.Geodesic.LatitudeAtLongitude(System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Gets the latitude at a specific longitude for a great circle defined by lat1,lon1 and lat2,lon2.
+            </summary>
+            <param name="lat1">The start latitude in radians.</param>
+            <param name="lon1">The start longitude in radians.</param>
+            <param name="lat2">The end latitude in radians.</param>
+            <param name="lon2">The end longitude in radians.</param>
+            <param name="lon">The longitude in radians for where the latitude is.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Behaviors.Utilities.Geodesic.GetTrueBearing(ESRI.ArcGIS.Client.Geometry.MapPoint,ESRI.ArcGIS.Client.Geometry.MapPoint,System.Double)">
+            <summary>
+            Gets the true bearing at a distance from the start point towards the new point.
+            </summary>
+            <param name="start">The start point.</param>
+            <param name="end">The point to get the bearing towards.</param>
+            <param name="distanceM">The distance in meters travelled between start and end.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Behaviors.Utilities.Geodesic.GetPointFromHeading(ESRI.ArcGIS.Client.Geometry.MapPoint,System.Double,System.Double)">
+            <summary>
+            Gets the point based on a start point, a heading and a distance.
+            </summary>
+            <param name="start">The start.</param>
+            <param name="distanceM">The distance in meters.</param>
+            <param name="heading">The heading.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Actions.ZoomToFullExtentAction">
+            <summary>
+            When triggered zooms to the full extent of the target map.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Actions.ZoomToFullExtentAction.Invoke(System.Object)">
+            <summary>
+            Invokes the action.
+            </summary>
+            <param name="parameter">The parameter to the action. If the Action does not require a parameter, the parameter may be set to a null reference.</param>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Actions.ToggleLayerAction">
+            <summary>
+            When triggered, toggles the visibility of a layer in the target map.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Actions.ToggleLayerAction.Invoke(System.Object)">
+            <summary>
+            Invokes the specified parameter.
+            </summary>
+            <param name="parameter">The parameter.</param>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Actions.ToggleLayerAction.LayerIDProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Actions.ToggleLayerAction.LayerID"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Actions.ToggleLayerAction.LayerID">
+            <summary>
+            Gets or sets the layer ID to toggle.
+            </summary>
+            <value>The layer ID.</value>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Behaviors.Utilities.RotatingTextSymbol.AngleProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Behaviors.Utilities.RotatingTextSymbol.Angle"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Behaviors.Utilities.RotatingTextSymbol.OnAnglePropertyChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            AngleProperty property changed handler. 
+            </summary>
+            <param name="d">ownerclass that changed its Angle.</param>
+            <param name="e">DependencyPropertyChangedEventArgs.</param> 
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Behaviors.Utilities.RotatingTextSymbol.TextProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Behaviors.Utilities.RotatingTextSymbol.Text"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Behaviors.Utilities.RotatingTextSymbol.OnTextPropertyChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            AngleProperty property changed handler. 
+            </summary>
+            <param name="d">ownerclass that changed its Angle.</param>
+            <param name="e">DependencyPropertyChangedEventArgs.</param> 
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Behaviors.Utilities.RotatingTextSymbol.HorizontalAlignmentProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Behaviors.Utilities.RotatingTextSymbol.HorizontalAlignment"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Behaviors.Utilities.RotatingTextSymbol.Angle">
+            <summary>
+            Gets or sets Angle.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Behaviors.Utilities.RotatingTextSymbol.Text">
+            <summary>
+            Gets or sets Text.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Behaviors.Utilities.MeasureRadius.FillSymbolProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Behaviors.Utilities.MeasureRadius.FillSymbol"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Behaviors.Utilities.MeasureRadius.LineSymbolProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Behaviors.Utilities.MeasureRadius.LineSymbol"/> dependency property.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,315 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ESRI.ArcGIS.Client.Bing</name>
+    </assembly>
+    <members>
+        <member name="T:ESRI.ArcGIS.Client.Bing.ServerType">
+            <summary>
+            Bing Maps for Enterprise Server type
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Bing.ServerType.Production">
+            <summary>
+            Production server for use with credentials/token that allow use of the production server.  
+            Bing Maps keys can only be used with the production server.  
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Bing.ServerType.Staging">
+            <summary>
+            Development/staging server for use with credentials/token that do not allow use of the production server.  
+            Bing Maps keys cannot be used with the development/staging server.   
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Bing.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Bing.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Bing.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Bing.Routing">
+            <summary>
+            Routing class performs Routing against the 
+            Bing Maps for Enterprise service.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Bing.Routing.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Bing.Routing"/> class.
+            </summary>
+            <param name="token">Bing Maps for Enterprise token.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Bing.Routing.#ctor(System.String,ESRI.ArcGIS.Client.Bing.ServerType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Bing.Routing"/> class.
+            </summary>
+            <param name="token">The Bing Maps token.</param>
+            <param name="servertype">The servertype.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Bing.Routing.Route(System.Collections.Generic.IEnumerable{ESRI.ArcGIS.Client.Geometry.MapPoint},System.EventHandler{ESRI.ArcGIS.Client.Bing.RouteService.CalculateRouteCompletedEventArgs})">
+            <summary>
+            Requests a route between the specified waypoints.
+            </summary>
+            <param name="waypoints">The waypoints as points.</param>
+            <param name="onComplete">The handler to call on completion.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Bing.Routing.Route(System.Collections.Generic.IEnumerable{ESRI.ArcGIS.Client.Bing.RouteService.Waypoint},System.EventHandler{ESRI.ArcGIS.Client.Bing.RouteService.CalculateRouteCompletedEventArgs})">
+            <summary>
+            Requests a route between the specified waypoints.
+            </summary>
+            <param name="waypoints">The waypoints.</param>
+            <param name="onComplete">The handler to call on completion.</param>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Bing.Routing.ServerType">
+            <summary>
+            Gets or sets the server type.
+            </summary>
+            <value>The type of the server.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Bing.Routing.Culture">
+            <summary>
+            Gets or sets the routing language culture.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Bing.Routing.TravelMode">
+            <summary>
+            Gets or sets the mode of travel.
+            </summary>
+            <value>The travel mode.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Bing.Routing.Optimization">
+            <summary>
+            Gets or sets optimization for time or distance.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Bing.Routing.TrafficUsage">
+            <summary>
+            Gets or sets whether traffic conditions are being taken into account.
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Bing.TileLayer">
+            <summary>
+            Bing Maps for Enterprise Tile Layer
+            </summary>
+            <remarks>
+            <para>
+            The Bing Maps TileLayer requires you to first get a Token/Bing Maps Key
+            from Microsoft. This token can be acquired at <a href="http://www.bingmapsportal.com">
+            www.bingmapsportal.com</a>. Set the <see cref="P:ESRI.ArcGIS.Client.Bing.TileLayer.Token"/> property to the 
+            generated key.
+            </para>
+            <para>
+            The Bing Maps tile layer requires the map to use the WebMercator projection (WKID=102100).
+            You can use the <see cref="M:ESRI.ArcGIS.Client.Bing.Transform.WebMercatorToGeographic(ESRI.ArcGIS.Client.Geometry.MapPoint)"/> and
+            <see cref="M:ESRI.ArcGIS.Client.Bing.Transform.GeographicToWebMercator(ESRI.ArcGIS.Client.Geometry.MapPoint)"/> methods to convert coordinates
+            between WGS84 longitude/latitude values (WKID=4326) and WebMercator.
+            </para>
+            <para>
+            The <see cref="P:ESRI.ArcGIS.Client.Bing.TileLayer.Culture"/> property allows you to set the label language
+            for the tiles returned, and defaults to US English ("en-US"). See
+            <a href="http://msdn.microsoft.com/en-us/library/cc469974.aspx">Returning
+            localized results</a> for a list of cultures that support map labels.
+            </para>
+            <para>
+            XAML usage of Bing Maps TileLayer:<br/>
+            <code lang="XAML">
+            &lt;esri:Map&gt;
+              &lt;esriBing:TileLayer ID="RoadMap" 
+                               Token="INSERT-YOUR-BING-TOKEN-HERE"
+                               LayerStyle="AerialWithLabels"
+                               Culture="en-US" /&gt;
+            &lt;/esri:Map&gt;
+            </code>
+            </para>
+            <para>
+            Note that the <see cref="P:ESRI.ArcGIS.Client.Bing.TileLayer.ServerType"/> property has been deprecated and 
+            should always be set to Production. The "Staging" type is only supported 
+            for the older now outdated token system Bing Maps was using earlier. The 
+            new tokens will not work with the staging servers.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Bing.TileLayer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Bing.TileLayer"/> class.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Bing.TileLayer.Initialize">
+            <summary>
+            Initializes the resource.
+            </summary>
+            <remarks>
+            <para>Override this method if your resource requires asyncronous requests to initialize,
+            and call the base method when initialization is completed.</para>
+            <para>Upon completion of initialization, check the <see cref="P:ESRI.ArcGIS.Client.Layer.InitializationFailure"/> for any possible errors.</para>
+            </remarks>
+            <seealso cref="E:ESRI.ArcGIS.Client.Layer.Initialized"/>
+            <seealso cref="P:ESRI.ArcGIS.Client.Layer.InitializationFailure"/>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Bing.TileLayer.GetTileUrl(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Returns a url to the specified tile
+            </summary>
+            <param name="level">Layer level</param>
+            <param name="row">Tile row</param>
+            <param name="col">Tile column</param>
+            <returns>URL to the tile image</returns>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Bing.TileLayer.LayerStyleProperty">
+            <summary>
+            Identifies the <see cref="P:ESRI.ArcGIS.Client.Bing.TileLayer.LayerStyle"/> dependency property
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Bing.TileLayer.Culture">
+            <summary>
+            Gets or sets the culture used for getting localized labels.
+            </summary>
+            <remarks>See <a href="http://msdn.microsoft.com/en-us/library/cc469974.aspx">http://msdn.microsoft.com/en-us/library/cc469974.aspx</a>
+            for a list of support cultures.
+            </remarks>
+            <value>The culture.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Bing.TileLayer.LayerStyle">
+            <summary>
+            Gets or sets the layer style
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Bing.TileLayer.Token">
+            <summary>
+            Gets or sets the token.
+            </summary>
+            <value>The token.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Bing.TileLayer.ServerType">
+            <summary>
+            Gets or sets the server type.
+            </summary>
+            <value>The type of the server. Default Value is to use the Production server.</value>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Bing.TileLayer.LayerType">
+            <summary>
+            Bing Layer styles
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Bing.TileLayer.LayerType.Road">
+            <summary>
+            Road map
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Bing.TileLayer.LayerType.Aerial">
+            <summary>
+            Aerial imagery
+            </summary>
+        </member>
+        <member name="F:ESRI.ArcGIS.Client.Bing.TileLayer.LayerType.AerialWithLabels">
+            <summary>
+            Aerial map with labels
+            </summary>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Bing.Geocoder">
+            <summary>
+            Geocoder class performs geocoding of addresses and reverse
+            geocoding of points against the Bing Maps for Enterprise service.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Bing.Geocoder.#ctor(System.String,ESRI.ArcGIS.Client.Bing.ServerType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Bing.Geocoder"/> class.
+            </summary>
+            <param name="token">The token.</param>
+            <param name="servertype">The servertype.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Bing.Geocoder.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ESRI.ArcGIS.Client.Bing.Geocoder"/> class, defaulting to the production server.
+            </summary>
+            <param name="token">The token.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Bing.Geocoder.Geocode(System.String,System.EventHandler{ESRI.ArcGIS.Client.Bing.GeocodeService.GeocodeCompletedEventArgs})">
+            <summary>
+            Geocodes address using an asynchronous call to Bings geocoding service.
+            </summary>
+            <param name="address">The address to geocode.</param>
+            <param name="onComplete">The method to call on complete.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Bing.Geocoder.Geocode(System.String,System.EventHandler{ESRI.ArcGIS.Client.Bing.GeocodeService.GeocodeCompletedEventArgs},System.Object)">
+            <summary>
+            Geocodes address using an asynchronous call to Bings geocoding service.
+            </summary>
+            <param name="address">The address to geocode.</param>
+            <param name="onComplete">The method to call on complete.</param>
+            <param name="userState">user state.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Bing.Geocoder.ReverseGeocode(ESRI.ArcGIS.Client.Geometry.MapPoint,System.EventHandler{ESRI.ArcGIS.Client.Bing.GeocodeService.ReverseGeocodeCompletedEventArgs})">
+            <summary>
+            Reverse geocodes a map point using a asynchronous call to Bings 
+            geocoding service.
+            </summary>
+            <param name="point">The map point to reverse geocode.</param>
+            <param name="onComplete">Method to call on complete.</param>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Bing.Geocoder.ReverseGeocode(ESRI.ArcGIS.Client.Geometry.MapPoint,System.EventHandler{ESRI.ArcGIS.Client.Bing.GeocodeService.ReverseGeocodeCompletedEventArgs},System.Object)">
+            <summary>
+            Reverse geocodes a map point using a asynchronous call to Bings 
+            geocoding service.
+            </summary>
+            <param name="point">The map point to reverse geocode.</param>
+            <param name="onComplete">Method to call on complete.</param>
+            <param name="userState">user state.</param>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Bing.Geocoder.ServerType">
+            <summary>
+            Gets or sets the server type.
+            </summary>
+            <value>The type of the server.</value>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Bing.Geocoder.Culture">
+            <summary>
+            Gets or sets the culture.
+            </summary>
+        </member>
+        <member name="P:ESRI.ArcGIS.Client.Bing.Geocoder.MinimumConfidence">
+            <summary>
+            Gets or sets the minimum confidence. The default value is High.
+            </summary>
+            <value>The minimum confidence.</value>
+        </member>
+        <member name="T:ESRI.ArcGIS.Client.Bing.Transform">
+            <summary>
+            Extension methods for converting points between 
+            Bing Maps WebMercator projection and WGS84 
+            Geographic coordinate system.
+            </summary>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Bing.Transform.WebMercatorToGeographic(ESRI.ArcGIS.Client.Geometry.MapPoint)">
+            <summary>
+            Helper method for quickly unprojecting coordinates from
+            webmercator (WKID=102100) to geographic WGS84 coordinates (WKID=4326).
+            </summary>
+            <param name="mercatorPoint">The mercator point.</param>
+            <returns>WGS84 geographic point</returns>
+        </member>
+        <member name="M:ESRI.ArcGIS.Client.Bing.Transform.GeographicToWebMercator(ESRI.ArcGIS.Client.Geometry.MapPoint)">
+            <summary>
+            Helper method for quickly projecting coordinates from 
+            geographic WGS84 coordinates (WKID=4326) to web mercator (WKID=102100).
+            </summary>
+            <remarks>
+            Latitude values must fall within -90 and 90. X values outside +/-180 
+            will assumed going round earth. ex. 181W is equivalent to 179E.
+            </remarks>
+            <param name="geographicPoint">The geographic point.</param>
+            <returns>Web Mercator point</returns>
+        </member>
+    </members>
+</doc>
